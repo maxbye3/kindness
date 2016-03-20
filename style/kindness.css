@@ -1,0 +1,138 @@
+/*
+* KINDNESS SCREEN
+*/
+
+@font-face {
+	font-family: Kindness;
+	src: url('../font/Kindness.ttf');
+}
+
+@font-face {
+	font-family: LoveYaLikeASister;
+	src: url('../font/LoveYaLikeASister.ttf');
+}
+/*
+* SKY
+*/  
+.kindnessScreen .sky{
+  font-family: LoveYaLikeASister;  
+  background: #b0ddd6;
+  padding: 75px;
+  padding-top: 30px;
+  padding-bottom: 90px;
+}
+
+.fixKindnessfont{
+    font-size: 30px;   
+ }
+
+.kindnessScreen .cloud{
+  position: absolute;
+}
+
+.kindnessScreen .sky h1,.kindnessScreen .beach h1{
+  position: absolute;
+  margin-left: 30px;
+}
+
+.kindnessScreen .skyBeach{
+  margin-top: -100px;
+  width: 100%;
+  z-index: 100;
+}
+
+
+/*
+* BEACH
+*/  
+.kindnessScreen .beach{
+ margin-top: -50px;
+ background: #fffdd7;
+ font-family: Kindness;  
+ font-size: 50pt;
+ line-height: 20px;
+}
+
+.kindnessScreen .beachInput{
+     padding: 20px;
+}
+
+  
+.kindnessScreen .beachInput input{
+    background: none;
+    border: none;
+    width: 85%;
+    height: auto;
+    line-height: initial;
+}
+
+
+.kindnessScreen .beachInput img{
+    float: right;
+    width: 35px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.kindnessScreen .furniture{
+    opacity: .5;
+    width: 200px;
+    top: 340px;
+    right: -20px;
+    position: absolute;
+}
+
+
+/* KindSubmit Button */
+.inactive{
+    opacity: .3;
+    cursor: not-allowed;
+}
+
+.kindSubmit{
+    margin-top: 40px;
+}
+
+.beach .boxBorder{
+    padding-left: 70px;
+    padding-right: 70px;
+    width: 100%;
+}
+
+.kindnessScreen .beach h1{
+    font-size: 80px;
+    margin-left: 140px;
+    line-height: 10px;
+}   
+
+.kindnessScreen .beach .beachSea{
+    margin-top: 50px;
+    width: 100%;
+}
+
+/*
+* SEA
+*/ 
+.kindnessScreen .sea{
+  margin-top: -12.5px;
+  background: #b4e3eb;
+  width: 100%;
+  color: white;
+  height: 800px;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.kindnessScreen  .sea p{
+  font-family: LoveYaLikeASister;
+  line-height: 20px;
+  width: 90%;
+}
+
+.kindnessScreen .sea .moreIcon{
+    width: 30px;
+    margin-top: -5px;
+    position: absolute;
+    right: 5px;
+    
+}
