@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Kindness With Graphics">
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="style/kindness.css" rel="stylesheet" type="text/css"/>
+<link rel="apple-touch-icon-precomposed" href="http://i.imgur.com/t2cowa9.png"/>
+  
+  
+  <link rel="apple-touch-icon-precomposed" href="http://i.imgur.com/DB46olL.png"/>
+  
+  
+  <link rel="apple-touch-startup-image" href="http://cdn.tutsplus.com/mobile/uploads/legacy/47_Build-an-iPhone-Web-App/iPhone-Web-App_02.png" />
+  
+ <!--  <link rel="apple-touch-startup-image" href="/startup.png"> -->
+  
+
+<<<<<<< HEAD
+  <meta name="apple-mobile-web-app-capable" content="yes" />  
+  
+  <meta name="viewport" content = "width = device-width, initial-scale = 2.3, user-scalable = no" />
+  
+<meta name="viewport" content = "width = device-width, initial-scale = 2.3, minimum-scale = 1, maximum-scale = 5" />
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+=======
+    <section class="main-content">
+      <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<img src="img/gidon.jpg">
+<p>Gidon test is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+>>>>>>> e11381c40bd1099623e96a594542f2a0b248b7eb
+
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="initial-scale=1.0">
+  
+ <title>Kindness App</title>
+  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  
+
+</head>
+<body>
+    
+<div class="kindnessScreen">  
+  
+<div class="sky">
+
+<!-- clouds -->
+  <img src="http://i.imgur.com/8ilNvAb.png" class="cloud">
+  
+  <img src="http://i.imgur.com/FZvsq0q.png" class="cloud">
+  
+  <img src="http://i.imgur.com/rP8Hnqb.png" class="cloud">
+
+  
+  <h1>Kindne<span class="fixKindnessfont">ss</span></h1>
+  
+  <!-- black box -->
+  <img src="img/border_black.png" width="250px" class="boxBorder">
+    
+</div>
+<!-- sky to beach transition -->
+  <img src="http://i.imgur.com/l7nOcaS.png" class="skyBeach">
+
+
+
+  
+<div class="beach">
+
+
+  <div class="beachInput deedInput">
+      <img src="img/achievement.png">
+      <input type="text" class="deedForm" placeholder="achievement"> 
+  <span class="underline">-------------------</span>
+  </div>    
+  
+  <div class="beachInput whoInput">
+      <img src="img/heart.png">
+      <input type="text" class="whoForm" placeholder="for who"> 
+  <span class="underline">-------------------</span>
+  </div>    
+  
+
+    <!-- umbrealla -->
+<img src="img/furniture.png" class="furniture">
+
+  
+  <div class="kindSubmit inactive" onclick="">
+   <h1>save</h1>
+  
+  <!-- black box -->
+  <img src="img/border_black.png" width="250px" class="boxBorder">
+  </div>
+  
+  
+
+  <img src="img/beachSea.png" class="beachSea">
+</div>
+  <div class="sea">
+      <img src="img/more_white.png" class="moreIcon" onclick="seeDatabase()">
+      <p></p>
+      
+  </div>
+
+  
+
+  
+  <div class="calanderView">  
+  <div id="messagesDiv"></div>
+</div>  
+  
+</body>
+
+<script src="js/kindnessDatabase.js"></script>
+</html>
