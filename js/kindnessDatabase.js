@@ -69,17 +69,15 @@ function saveKindness(){
 deedDatabase.on("child_added", function(snapshot, prevChildKey) {
   pastDeeds = snapshot.val();
 //   console.log("Previous Post ID: " + prevChildKey);
-  $('<div/>').html("<p>\
-    <span class='alert alert-info'>" + pastDeeds.when + "</span> \
-    <span class='label label-info'>" + pastDeeds.what + "</span> for \
-    <span class='label label-success'>" + pastDeeds.who + "</span>\
-    </p>").appendTo($('#messagesDiv'));
+  $('<div/>').html("<span class='deleteIcon'><img src='img/deleteIcon.png' class='deleteIcon'></span>\
+  <p>"+ pastDeeds.what +" "+ pastDeeds.who +" ("+pastDeeds.when+")</p>\
+  <p class='divider'>-------------------</p>").appendTo($('#messagesDiv'));
     
     var taskString = "(" + pastDeeds.when + ") " + pastDeeds.what + " for " + pastDeeds.who;
 
     if(taskString.length > 33) taskString = taskString.substring(0,33) + "...";
    
-    $(".kindnessScreen  .sea p").html(taskString);
+    $(".kindnessScreen .sea .latestUpdate").html(taskString);
 });
 
 
