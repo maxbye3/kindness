@@ -1,3 +1,6 @@
+/*
+* This script deals with firebase database
+*/
 // Get a reference to our posts
 var firebaseRef = new Firebase('https://mrmoonhead.firebaseio.com'),
 deedDatabase = new Firebase('https://mrmoonhead.firebaseio.com/actions'), 
