@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta name="description" content="Kindness With Graphics">
-<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
-<link href="style/kindness/index.css" rel="stylesheet" type="text/css"/>
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+<link href="style/kindness/kindness.css" rel="stylesheet" type="text/css"/>
 <link rel="apple-touch-icon-precomposed" href="http://i.imgur.com/t2cowa9.png"/>
   
   
@@ -30,8 +30,7 @@
 <meta name="viewport" content="initial-scale=1.0">
   
  <title>Kindness App</title>
- 
-
+  
 </head>
 <body>
     
@@ -42,18 +41,67 @@
 <!-- clouds -->
   <img src="img/cloud1.png" class="cloud cloud1">
   
-  <img src="img/cloud2.png" class="cloud">
-  
-  <img src="img/cloud3.png" class="cloud">
-
   <div class="button">
     <h1>Kindne<span class="fixKindnessfont">ss</span></h1>
     <!-- black box -->
     <img src="img/border_black.png" width="250px" class="boxBorder">
   </div>
-  
+
+
 </div>
+
+<div class="skyBeach">
+    
+       <!-- sky to beach transition -->
+  <img src="img/skyBeach.png" width="100%">
+    
+</div>
+
+<div class="beach">
+ 
+
+    
+
+  <div class="beachInput deedInput">
+      <img src="img/achievement.png">
+      <input type="text" class="deedForm" placeholder="achievement"> 
+  <span class="underline">-------------------</span>
+  </div>    
+  
+  <div class="beachInput whoInput">
+      <img src="img/heart.png">
+      <input type="text" class="whoForm" placeholder="for who"> 
+  <span class="underline">-------------------</span>
+  </div>    
+  
+
+    <!-- umbrealla -->
+<img src="img/furniture.png" class="furniture">
+
+  
+  <div class="button kindSubmit inactive" onclick="">
+    <h1>save</h1>
+    <img src="img/border_black.png" width="250px">
+  </div>
+  
+  
+  
+
+  <img src="img/beachSea.png" class="beachSea">
+</div>
+
+  
+
+  <div class="sea">
+      <img src="img/more_white.png" class="moreIcon" onclick="seeDatabase()">
+      <p class="latestUpdate"></p>
+      <div id="messagesDiv">
+          <img src="img/sailboat.png" class="sailboat">
+      </div>
+      
+  </div>
 </body>
+
  <script src="https://code.jquery.com/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>

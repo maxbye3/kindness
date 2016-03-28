@@ -4,16 +4,19 @@
 
 @font-face {
 	font-family: Kindness;
-	src: url('../font/Kindness.ttf');
+	src: url('../../font/Kindness.ttf');
 }
 
 @font-face {
 	font-family: LoveYaLikeASister;
-	src: url('../font/LoveYaLikeASister.ttf');
+	src: url('../../font/LoveYaLikeASister.ttf');
 }
 /*
 * SKY
 */  
+
+$primary-color: #333;
+
 .kindnessScreen .sky{
   font-family: LoveYaLikeASister;  
   background: #b0ddd6;
