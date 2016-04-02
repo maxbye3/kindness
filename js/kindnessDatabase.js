@@ -33,10 +33,10 @@ function updateKindness(e){
   what = $('.deedForm').val();      
   
   if(who!=="" && what!=="") {
-      $(".kindSubmit").removeClass("inactive").attr("onclick","saveKindness()");
+      $(".beach .button").removeClass("inactive").attr("onclick","saveKindness()");
   }
   else{
-      $(".kindSubmit").addClass("inactive").attr("onclick","");
+      $(".beach .button").addClass("inactive").attr("onclick","");
   }  
   
   if (e.keyCode == 13) {
