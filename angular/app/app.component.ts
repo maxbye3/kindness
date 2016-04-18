@@ -8,21 +8,25 @@ export class Kindness {
 @Component({
   selector: 'my-app',
   template:`
-  <h1>{{title}}</h1>
-  <h2>{{kindness.deed}} details!</h2>
-  <div><label>id: </label>{{kindness.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="kindness.deed" placeholder="deed">
+  <div *ngIf="selectedKindness">
+    <h1>{{title}}</h1>
+    <h2>{{selectedKindness.deed}} details!</h2>
+    <div><label>id: </label>{{selectedKindness.id}}</div>
+    <div>
+      <label>name: </label>
+      <input [(ngModel)]="selectedKindness.deed" placeholder="deed">
+    </div>
   </div>
   
   <h2>My Actions</h2>
 <ul class="heroes">
-  <li>
+  
     <!-- each hero goes here -->
-    <li *ngFor="#kindness of kindnesses">
-    <span class="badge">{{kindness.id}}</span> {{kindness.deed}}
-  </li>
+    <li *ngFor="#kindness of kindnesses; #i = index" 
+    [class.selected]="kindness === selectedKindness"
+    (click)="onSelect(kindness)">
+    <span class="badge">{{i}} {{kindness.id}}</span> {{kindness.deed}}
+
 </ul>
 
   `,
@@ -79,11 +83,9 @@ export class Kindness {
 
 export class AppComponent {
   public kindnesses = KINDNESSLIST;
-  kindness: Kindness = {
-    id: 1,
-    deed: 'Test action'
-  };
+  selectedKindness: Kindness;
   title = 'Kindness App';  
+  onSelect(kindness: Kindness) { this.selectedKindness = kindness; }
 }
 
   var KINDNESSLIST: Kindness[] = [
