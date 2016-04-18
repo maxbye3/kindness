@@ -1,25 +1,12 @@
 import {Component} from 'angular2/core';
-
-export class Kindness {
-  id: number;
-  deed: string;
-}
+import {Kindness} from './kindness';
+import {KindnessDetailComponent} from './kindness-detail.component';
 
 @Component({
   selector: 'my-app',
-  template:`
-  <div *ngIf="selectedKindness">
-    <h1>{{title}}</h1>
-    <h2>{{selectedKindness.deed}} details!</h2>
-    <div><label>id: </label>{{selectedKindness.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="selectedKindness.deed" placeholder="deed">
-    </div>
-  </div>
-  
+  template:`  
   <h2>My Actions</h2>
-<ul class="heroes">
+  <ul class="heroes">
   
     <!-- each hero goes here -->
     <li *ngFor="#kindness of kindnesses; #i = index" 
@@ -28,6 +15,9 @@ export class Kindness {
     <span class="badge">{{i}} {{kindness.id}}</span> {{kindness.deed}}
 
 </ul>
+
+<my-kindness-detail [kindness]="selectedKindness"></my-kindness-detail>
+
 
   `,
   styles:[`
@@ -78,7 +68,8 @@ export class Kindness {
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
-`]
+`],
+directives: [KindnessDetailComponent]
 })
 
 export class AppComponent {
