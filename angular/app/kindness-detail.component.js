@@ -26,17 +26,16 @@ System.register(['angular2/core', './kindness'], function(exports_1, context_1) 
                 }
                 __decorate([
                     core_1.Input(), 
-                    __metadata('design:type', (typeof (_a = typeof kindness_1.Kindness !== 'undefined' && kindness_1.Kindness) === 'function' && _a) || Object)
+                    __metadata('design:type', kindness_1.Kindness)
                 ], KindnessDetailComponent.prototype, "kindness", void 0);
                 KindnessDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'my-kindness-detail',
-                        template: "\n  <div *ngIf=\"kindness\">\n    <h2>{{kindness.name}} details!</h2>\n    <div><label>id: </label>{{kindness.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"kindness.deed\" placeholder=\"deed\"/>\n    </div>\n  </div>"
+                        template: "\n  <div *ngIf=\"kindness\">\n    <h2>{{kindness.deed}} details!</h2>\n    <div><label>id: </label>{{kindness.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"kindness.deed\" placeholder=\"deed\"/>\n    </div>\n  </div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KindnessDetailComponent);
                 return KindnessDetailComponent;
-                var _a;
             }());
             exports_1("KindnessDetailComponent", KindnessDetailComponent);
         }
