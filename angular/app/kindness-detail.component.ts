@@ -5,7 +5,7 @@ import {Kindness} from './kindness';
     selector: 'my-kindness-detail',
     template: `
   <div *ngIf="kindness">
-    <h2>{{kindness.name}} details!</h2>
+    <h2>{{kindness.deed}} details!</h2>
     <div><label>id: </label>{{kindness.id}}</div>
     <div>
       <label>name: </label>
