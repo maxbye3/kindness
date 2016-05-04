@@ -1,6 +1,7 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Kindness} from './kindness';
 import {KindnessDetailComponent} from './kindness-detail.component';
+import {KindnessService} from './kindness.service';
 
 @Component({
   selector: 'my-app',
@@ -9,16 +10,12 @@ import {KindnessDetailComponent} from './kindness-detail.component';
   <ul class="heroes">
   
     <!-- each hero goes here -->
-    <li *ngFor="#kindness of kindnesses; #i = index" 
+    <li *ngFor="#kindness of kindnesses;" 
     [class.selected]="kindness === selectedKindness"
     (click)="onSelect(kindness)">
-    <span class="badge">{{i}} {{kindness.id}}</span> {{kindness.deed}}
-
+    <span class="badge">{{kindness.id}}</span> {{kindness.deed}}
 </ul>
-
 <my-kindness-detail [kindness]="selectedKindness"></my-kindness-detail>
-
-
   `,
   styles:[`
   .selected {
@@ -69,20 +66,26 @@ import {KindnessDetailComponent} from './kindness-detail.component';
     border-radius: 4px 0 0 4px;
   }
 `],
-directives: [KindnessDetailComponent]
+directives: [KindnessDetailComponent],
+providers: [KindnessService]
 })
 
 export class AppComponent {
-  public kindnesses = KINDNESSLIST;
+  kindnesses: Kindness[];
   selectedKindness: Kindness;
   title = 'Kindness App';  
   onSelect(kindness: Kindness) { this.selectedKindness = kindness; }
+  
+  constructor(private _kindnessService: KindnessService) { }
+  
+ getKindness() {
+      this._kindnessService.getKindness().then(kindnesses => this.kindnesses = kindnesses);
+  }
+
+
+  ngOnInit() {
+    this.getKindness();
+  }
 }
 
-  var KINDNESSLIST: Kindness[] = [
-  { "id": 11, "deed": "Test Action 1" },
-  { "id": 12, "deed": "Test Action 2" },
-  { "id": 13, "deed": "Test Action 3" },
-  { "id": 14, "deed": "Test Action 4" },
-  { "id": 15, "deed": "Test Action 5" },
-];
+ 
