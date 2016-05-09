@@ -5,7 +5,7 @@ import {Kindness} from './kindness';
 @Injectable()
 export class KindnessService {
   getKindness() {
-       return KINDNESSLIST;
+       return Promise.resolve(KINDNESSLIST);
   }
 }
 

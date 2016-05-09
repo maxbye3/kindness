@@ -25,7 +25,7 @@ System.register(['angular2/core', './mock-kindness'], function(exports_1, contex
                 function KindnessService() {
                 }
                 KindnessService.prototype.getKindness = function () {
-                    return mock_kindness_1.KINDNESSLIST;
+                    return Promise.resolve(mock_kindness_1.KINDNESSLIST);
                 };
                 KindnessService = __decorate([
                     core_1.Injectable(), 
