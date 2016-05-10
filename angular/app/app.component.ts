@@ -3,6 +3,7 @@ import {KindnessService} from './kindness.service';
 import { KindnessComponent } from './kindness.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import { DashboardComponent } from './dashboard.component';
+import { KindnessDetailComponent } from './kindness-detail.component';
 
 @Component({
   selector: 'my-app',
@@ -24,15 +25,26 @@ import { DashboardComponent } from './dashboard.component';
 
 
 @RouteConfig([
-  {path:'/kindness', name: 'Kindness', component: KindnessComponent},
+  {
+    path:'/kindness', 
+    name: 'Kindness', 
+    component: KindnessComponent
+  },
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardComponent,
     useAsDefault: true
-  }
+  },
+  {
+  path: '/detail/:id',
+  name: 'KindnessDetail',
+  component: KindnessDetailComponent
+}
+
+  
 ])
 
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'Kindness App';
 }

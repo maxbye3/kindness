@@ -27,6 +27,9 @@ System.register(['angular2/core', './mock-kindness'], function(exports_1, contex
                 KindnessService.prototype.getKindness = function () {
                     return Promise.resolve(mock_kindness_1.KINDNESSLIST);
                 };
+                KindnessService.prototype.getKindnessById = function (id) {
+                    return Promise.resolve(mock_kindness_1.KINDNESSLIST).then(function (kindnesses) { return kindnesses.filter(function (kindness) { return kindness.id === id; })[0]; });
+                };
                 KindnessService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

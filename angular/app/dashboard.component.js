@@ -33,9 +33,12 @@ System.register(['angular2/core', 'angular2/router', './kindness.service'], func
                 DashboardComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._kindnessService.getKindness()
-                        .then(function (kindnesses) { return _this.kindnesses = kindnesses.slice(0, 5); });
+                        .then(function (kindnesses) { return _this.kindnesses = kindnesses.slice(0, 3); });
                 };
-                DashboardComponent.prototype.gotoDetail = function () { };
+                DashboardComponent.prototype.gotoDetail = function (kindness) {
+                    var link = ['KindnessDetail', { id: kindness.id }];
+                    this.router.navigate(link);
+                };
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'my-dashboard',

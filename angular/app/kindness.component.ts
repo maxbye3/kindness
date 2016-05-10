@@ -1,4 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
+import {Router} from 'angular2/router';
 import {Kindness} from './kindness';
 import {KindnessDetailComponent} from './kindness-detail.component';
 import {KindnessService} from './kindness.service';
@@ -15,7 +16,12 @@ import {KindnessService} from './kindness.service';
     (click)="onSelect(kindness)">
     <span class="badge">{{kindness.id}}</span> {{kindness.deed}}
 </ul>
-<my-kindness-detail [kindness]="selectedKindness"></my-kindness-detail>
+<div *ngIf="selectedKindness">
+  <h2>
+    {{selectedKindness.deed | uppercase}} is my kindness
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
   `,
   styles:[`
   .selected {
@@ -76,12 +82,19 @@ export class KindnessComponent implements OnInit {
   title = 'Kindness App';  
   onSelect(kindness: Kindness) { this.selectedKindness = kindness; }
   
-  constructor(private _kindnessService: KindnessService) { }
+  constructor(
+    private _kindnessService: KindnessService,
+    private _router: Router
+    ) { }
   
  getKindness() {
       this._kindnessService.getKindness().then(kindnesses => this.kindnesses = kindnesses);
   }
-
+  
+  gotoDetail() {
+      let link = ['KindnessDetail', { id: this.selectedKindness.id }];
+      this._router.navigate(link);
+  }
 
   ngOnInit() {
     this.getKindness();

@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import {Router} from 'angular2/router';
 import {Kindness} from './kindness';
 import {KindnessService} from './kindness.service';
 
@@ -30,13 +30,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this._kindnessService.getKindness()
-      .then(kindnesses => this.kindnesses = kindnesses.slice(0,5));
+      .then(kindnesses => this.kindnesses = kindnesses.slice(0,3));
   }
   
-  gotoDetail(){ /* not implemented yet */}
-  
-//   gotoDetail(kindness: Kindness) {
-//     let link = ['KindnessDetail', { id: kindness.id }];
-//     this.router.navigate(link);
-//   }
+  gotoDetail(kindness: Kindness) {
+    let link = ['KindnessDetail', { id: kindness.id }];
+    this.router.navigate(link);
+  } 
 }

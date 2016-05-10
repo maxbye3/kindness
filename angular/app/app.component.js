@@ -1,4 +1,4 @@
-System.register(['angular2/core', './kindness.service', './kindness.component', 'angular2/router', './dashboard.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './kindness.service', './kindness.component', 'angular2/router', './dashboard.component', './kindness-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, kindness_service_1, kindness_component_1, router_1, dashboard_component_1;
+    var core_1, kindness_service_1, kindness_component_1, router_1, dashboard_component_1, kindness_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -28,11 +28,14 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
             },
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
+            },
+            function (kindness_detail_component_1_1) {
+                kindness_detail_component_1 = kindness_detail_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Tour of Heroes';
+                    this.title = 'Kindness App';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
@@ -47,12 +50,21 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
                         ]
                     }),
                     router_1.RouteConfig([
-                        { path: '/kindness', name: 'Kindness', component: kindness_component_1.KindnessComponent },
+                        {
+                            path: '/kindness',
+                            name: 'Kindness',
+                            component: kindness_component_1.KindnessComponent
+                        },
                         {
                             path: '/dashboard',
                             name: 'Dashboard',
                             component: dashboard_component_1.DashboardComponent,
                             useAsDefault: true
+                        },
+                        {
+                            path: '/detail/:id',
+                            name: 'KindnessDetail',
+                            component: kindness_detail_component_1.KindnessDetailComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])
