@@ -1,0 +1,84 @@
+
+
+
+/* theme change content */
+body{
+  margin: 0;
+}
+
+.centerContent{
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  font-size: 80px;
+}
+
+.themeButton{
+    font-size: 40px;   
+    width: 70%;
+    vertical-align: bottom;
+    margin-top: 20px; 
+    font-family: Kindness;
+    font-size: 55px;
+}
+
+.summer{
+    background: #fffad2;
+}
+
+.winter{
+    background: #fff;
+}
+
+
+.autumn{
+  background: #F1E7C3;
+}
+
+.selected{
+  transition: background 2s ease;
+  background: rgba(0,0,0,0.05);
+}
+
+.centerContent{
+   padding-top: 40%;
+}
+
+/* SUMMER THEME */
+.summer .sky{
+  background: #b0ddd6;
+}
+
+.summer .beach path ,.summer .beach rect{
+  fill: #fffad2;
+}
+
+.summer .sea{
+  background: #b6e5ed;
+}
+
+/* WINTER THEME */
+.winter .sky{
+  background: #EAF7FF;
+}
+
+.winter .beach path ,.winter .beach rect{
+  fill: #FFFFFF;
+}
+
+.winter .sea{
+  background: #D6EDED;
+}
+
+/* AUTUMN THEME */
+.autumn .sky{
+  background: #FFC98D
+}
+
+.autumn .beach path, .autumn .beach rect {
+  fill: #F1E7C3;
+}
+
+.autumn .sea{
+  background: #F6805C
+}
