@@ -1,0 +1,207 @@
+/*
+* KINDNESS SCREEN
+*/
+
+@font-face {
+	font-family: Kindness;
+	src: url('../font/Kindness.ttf');
+}
+
+@font-face {
+	font-family: LoveYaLikeASister;
+	src: url('../font/LoveYaLikeASister.ttf');
+}
+/*
+* SKY
+*/  
+.kindnessScreen .sky{
+  font-family: LoveYaLikeASister;  
+  background: #b0ddd6;
+  padding-top: 30px;
+  padding-bottom: 90px;
+}
+
+.fixKindnessfont{
+    font-size: 30px;   
+ }
+
+.kindnessScreen .cloud{
+  position: absolute;
+  z-index: 0;
+
+  -ms-transition: -ms-transform 2s;
+  -webkit-transition: webkit-transform 2s; /* Safari */
+  transition: transform 2s;
+  
+  top: 150px;
+}
+
+.cloud1{
+    top: 50px !important;
+    left: -50px;
+}
+
+.kindnessScreen .skyBeach{
+  width: 100%;
+  margin-top: -70px;
+}
+
+/*
+* Buttons
+*/ 
+.button{
+  float: initial;
+  padding: 0px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.button h1 {
+  position: absolute;
+}
+
+.sky .button h1 {
+  margin-top: 10px;
+  margin-left: 40px;
+}
+  
+.beach .button h1 {
+    margin-top: 17.5px;
+    margin-left: 75px;
+}
+       
+
+
+/*
+* BEACH
+*/  
+.kindnessScreen .beach{
+ margin-top: -10px;
+ background: #fffdd7;
+ font-family: Kindness;  
+ font-size: 50pt;
+ line-height: 20px;
+}
+
+.kindnessScreen .beachInput{
+     padding: 20px;
+}
+
+.underline{
+    
+    pointer-events: none;
+}
+
+  
+.kindnessScreen .beachInput input{
+    background: none;
+    border: none;
+    width: 85%;
+    height: auto;
+    line-height: initial;
+}
+
+
+.kindnessScreen .beachInput img{
+    float: right;
+    width: 35px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.kindnessScreen .furniture{
+    opacity: .5;
+    width: 200px;
+    top: 340px;
+    left: 20px;
+    position: absolute;
+    pointer-events: none;
+}
+
+
+/* KindSubmit Button */
+.inactive{
+    opacity: .3;
+    cursor: not-allowed;
+}
+
+.kindSubmit{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.beach .boxBorder{
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.kindnessScreen .beach h1{
+    font-size: 80px;
+}   
+
+.kindnessScreen .beach .beachSea{
+    margin-top: 50px;
+    width: 100%;
+}
+
+/*
+* SEA
+*/ 
+.kindnessScreen .sea{
+  margin-top: -12.5px;
+  background: #b4e3eb;
+  color: white;
+  height: 800px;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.kindnessScreen  .sea p{
+  font-family: LoveYaLikeASister;
+  line-height: 20px;
+  width: 90%;
+}
+
+.kindnessScreen .sea .moreIcon{
+    width: 30px;
+    margin-top: -5px;
+    position: absolute;
+    right: 15px;  
+    
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+    
+    -ms-transition: -ms-transform 2s;
+    -webkit-transition: webkit-transform 2s; /* Safari */
+    transition: transform 2s;
+}
+
+.kindnessScreen #messagesDiv {
+    margin-top: 40px;  
+    width: auto;
+    height: 600px;
+    overflow: scroll;
+}
+
+.kindnessScreen #messagesDiv div p{
+    font-family: Kindness; 
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.kindnessScreen #messagesDiv div .divider{
+font-size: 70px;
+}
+
+.kindnessScreen #messagesDiv div .deleteIcon{
+    float:right;
+    width: 15px;
+    margin-right: 15px;
+}
+
+.kindnessScreen .sea .sailboat{
+  position: absolute; 
+  width: 250px;
+}
