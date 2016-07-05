@@ -59,13 +59,22 @@ body{
 </style>
 <body>
 
-     <!--<button (click)="theme = 'autumn';">Toggle style</button>-->
+  <!-- Sonny -->
+  <img src="{{sonnyState}}" class="sonny">
 
+  <!--test-->
+  <button (click)="changeGraphic('intro')">INTRO</button>
+  <button (click)="changeGraphic('exit')">OUTRO</button>
+  <button (click)="changeGraphic('winning')">WINNING</button>
+  <button (click)="changeGraphic('talking')">TALKING</button>
+  <button (click)="changeGraphic('undefined')">UNDEFINED</button>
+  <!--Sonny (end)-->
+  
   <!--Content-->
   <div class="centerContent">
   <center>
     
-    <img src="./img/summerGIF.gif">
+    <!--<img src="./img/scenes/summer.gif" style="position: absolute;">-->
 
     <div class="themeButton summer" [class.selected]="selectedBackground == 'summer'" (click)="theme = 'summer'; selectButton('summer');">
     summer

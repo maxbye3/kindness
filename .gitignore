@@ -1,0 +1,7 @@
+.sass-cache/
+.DS_Store
+*.DS_Store
+settings/img/gif-creation
+settings/.vscode
+settings/node_modules
+angular/node_modules

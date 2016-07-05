@@ -21,9 +21,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             ChangeThemeComponent = (function () {
                 function ChangeThemeComponent() {
                     this.showStyle = false;
+                    this.sonnyState = "./img/sonny/intro.gif";
                     this.theme = "summer";
                     this.selectedBackground = "summer";
                 }
+                /*
+                * Changing the theme
+                */
                 ChangeThemeComponent.prototype.changeTheme = function () {
                     return this.theme;
                 };
@@ -36,6 +40,41 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.selectedBackground = theme;
                     console.log(this.selectedBackground);
                     return 'rgba(0,0,0,0.05)';
+                };
+                // theme change (end)
+                /*
+                * Changing Sonny
+                */
+                ChangeThemeComponent.prototype.changeGraphic = function (state) {
+                    debugger;
+                    switch (state) {
+                        case "intro":
+                            this.sonnyState = "./img/sonny/intro.gif";
+                            break;
+                        case "exit":
+                            this.sonnyState = "./img/sonny/exit.gif";
+                            break;
+                        case "talking":
+                            this.sonnyState = "./img/sonny/talking.gif";
+                            break;
+                        case "winning":
+                            this.sonnyState = "./img/sonny/winning.gif";
+                            break;
+                        case "bounce":
+                            this.sonnyState = "./img/sonny/bounce.gif";
+                            break;
+                        case "checkout":
+                            this.sonnyState = "./img/sonny/checkout.gif";
+                            break;
+                        case "idle":
+                            this.sonnyState = "./img/sonny/idle.gif";
+                            break;
+                        case "yawn":
+                            this.sonnyState = "./img/sonny/yawn.gif";
+                            break;
+                        default:
+                            this.sonnyState = "";
+                    }
                 };
                 ChangeThemeComponent = __decorate([
                     core_1.Component({
