@@ -1,0 +1,166 @@
+.sonnyContainer {
+    position: absolute;
+    z-index: 1;
+}
+.sonnyChar {
+    position: absolute;
+    left: -90px;
+    top: 50px;
+}
+.sonnyGif,.sonnyStatic{
+    height: 150px;
+}
+
+.sonnyStatic{
+  position: absolute;
+  top: 0px;
+}
+
+
+
+/* SPEECH BUBBLE ANIMATION */
+#speechBubble{
+    padding: 7.5px;
+    top: 80px;
+    z-index: 3;
+
+    -webkit-transition: width 0.7s, opacity 0.7s; /* Safari */
+    transition: width 0.7s , opacity 0.7s;
+}
+.triangle-border.left {
+    margin-left: 0px;
+    margin-right: 5px;
+    left: 100px;
+
+    display: none;
+    -webkit-animation-name: speechBorder;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+
+    animation-name: speechBorder;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-delay: .5s;    
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    border: solid #FCBA40;    
+    border-width: 0px;
+}
+
+.triangle-border {
+    position: relative; 
+    margin: 0 0 3em;
+    color: #333;
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+@keyframes speechBorder {
+    from {border-width: 0px;}
+    to {border-width: 5px;}
+}
+
+.triangle-border:before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+    border-style: solid;
+    display: block;
+    width: 0;
+}
+
+.triangle-border.left:before {
+    top: 10px;
+    bottom: auto;
+    left: -30px;
+    
+    -webkit-animation-name: speechTriangle;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: .5s;
+
+    animation-name: speechTriangle;
+    animation-duration: .5s;
+    animation-iteration-count: 1;
+    animation-delay: .5s;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    border-width: 0;
+    border-color: transparent #FCBA40;
+}
+
+@keyframes speechTriangle {
+    from {border-width: 5px 30px 5px 0;}
+    to {border-width: 15px 30px 15px 0;}
+}
+
+.triangle-border.left:after {
+    top: 16px;
+    bottom: auto;
+    left: -21px;
+    border-width: 9px 21px 9px 0;
+    border-color: transparent #fff;
+}
+.triangle-border:after {
+    content: "";
+    position: absolute;
+    bottom: -13px;
+    left: 47px;
+
+    border-style: solid;
+    border-color: #fff transparent;
+    display: block;
+    width: 0;
+}
+/* speech bubble end */
+
+/* SPEECH TEXT ANIMATION */
+.speechContent p{   
+    font-size: 25px;
+    line-height: 27px;
+    margin: 0px;
+    white-space: nowrap; 
+    overflow: hidden;
+    width: 0;
+
+    animation: type 4s steps(60, end); 
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+}
+
+.speechContent p:nth-child(2){
+  animation-delay: 5s;  
+}
+
+
+@keyframes type{ 
+  from { width: 0; } 
+  to { width: 100%; } 
+} 
+
+@media (max-width: 321px) {
+    .speechContent p {
+        font-size: 25px;
+    }
+}
+
+
+/* speech text animation */
