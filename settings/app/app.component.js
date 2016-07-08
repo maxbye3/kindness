@@ -1,4 +1,4 @@
-System.register(['angular2/core', './kindness.service', './kindness.component', 'angular2/router', './dashboard.component', './change-theme.component', './kindness-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './kindness.service', './kindness.component', 'angular2/router', './dashboard.component', './background.component', './kindness-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, kindness_service_1, kindness_component_1, router_1, dashboard_component_1, change_theme_component_1, kindness_detail_component_1;
+    var core_1, kindness_service_1, kindness_component_1, router_1, dashboard_component_1, background_component_1, kindness_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -29,8 +29,8 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
             function (dashboard_component_1_1) {
                 dashboard_component_1 = dashboard_component_1_1;
             },
-            function (change_theme_component_1_1) {
-                change_theme_component_1 = change_theme_component_1_1;
+            function (background_component_1_1) {
+                background_component_1 = background_component_1_1;
             },
             function (kindness_detail_component_1_1) {
                 kindness_detail_component_1 = kindness_detail_component_1_1;
@@ -38,14 +38,15 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Kindness App';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1>{{title}}</h1>\n    <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n    <a [routerLink]=\"['Kindness']\">Kindness</a>\n    <a [routerLink]=\"['ChangeTheme']\">Change Theme</a>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n    <router-outlet></router-outlet>\n     \n    <!-- <a [routerLink]=\"['ChangeTheme']\">Change Theme</a> -->\n    <!-- <background></background> -->\n  ",
+                        styleUrls: ['app/app.component.css'],
                         directives: [
                             kindness_component_1.KindnessComponent,
+                            background_component_1.BackgroundComponent,
                             router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
@@ -54,14 +55,15 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
                     }),
                     router_1.RouteConfig([
                         {
+                            path: '/changetheme',
+                            name: 'ChangeTheme',
+                            component: background_component_1.BackgroundComponent
+                        },
+                        // default views
+                        {
                             path: '/kindness',
                             name: 'Kindness',
                             component: kindness_component_1.KindnessComponent
-                        },
-                        {
-                            path: '/changetheme',
-                            name: 'ChangeTheme',
-                            component: change_theme_component_1.ChangeThemeComponent
                         },
                         {
                             path: '/dashboard',

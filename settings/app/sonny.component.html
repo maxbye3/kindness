@@ -1,0 +1,32 @@
+
+   <!--Sonny -->
+  <div class='sonnyContainer'>
+    <div class='sonnyChar'>
+      <img src="{{sonnyGif}}" class="sonnyGif">
+      <!--<img src="./img/sonny/idle.png" class="sonnyStatic" id="sonnyStatic">-->
+    </div> 
+  </div>  
+  
+  <div class="sonnySpeech">
+    <div class="triangle-border left" id="speechBubble">
+   
+<div class="speechContent">
+<p>hi folks, this is typing animation using CSS</p>
+<p>Sonny's words will go here!</p> 
+</div>
+
+    </div>
+  </div>
+
+
+  <!--test-->
+  <div style="position: absolute; z-index: 100; bottom: 0px;">
+
+    <button (click)="sonnyState('intro')">INTRO</button><br>
+    <button (click)="sonnyState('exit')">OUTRO</button><br>
+    <button (click)="sonnyState('winning')">WINNING</button><br>
+    <button (click)="sonnyState('talking')">TALKING</button><br>
+    <button (click)="sonnyState('undefined')">UNDEFINED</button><br>
+
+  </div> 
+   <!--test (end)-->

@@ -3,20 +3,21 @@ import {KindnessService} from './kindness.service';
 import { KindnessComponent } from './kindness.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import { DashboardComponent } from './dashboard.component';
-import { ChangeThemeComponent } from './change-theme.component';
+import { BackgroundComponent } from './background.component';
 import { KindnessDetailComponent } from './kindness-detail.component';
 
 @Component({
   selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <a [routerLink]="['Dashboard']">Dashboard</a>
-    <a [routerLink]="['Kindness']">Kindness</a>
-    <a [routerLink]="['ChangeTheme']">Change Theme</a>
+    template: `
     <router-outlet></router-outlet>
+     
+    <!-- <a [routerLink]="['ChangeTheme']">Change Theme</a> -->
+    <!-- <background></background> -->
   `,
+  styleUrls: ['app/app.component.css'],
   directives: [
     KindnessComponent,
+    BackgroundComponent,
     ROUTER_DIRECTIVES],
   providers: [
     ROUTER_PROVIDERS,
@@ -27,15 +28,16 @@ import { KindnessDetailComponent } from './kindness-detail.component';
 
 
 @RouteConfig([
+    {
+    path:'/changetheme', 
+    name: 'ChangeTheme', 
+    component: BackgroundComponent
+  },
+  // default views
   {
     path:'/kindness', 
     name: 'Kindness', 
     component: KindnessComponent
-  },
-    {
-    path:'/changetheme', 
-    name: 'ChangeTheme', 
-    component: ChangeThemeComponent
   },
   {
     path: '/dashboard',
@@ -53,5 +55,4 @@ import { KindnessDetailComponent } from './kindness-detail.component';
 ])
 
 export class AppComponent {
-  title = 'Kindness App';
 }
