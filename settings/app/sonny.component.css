@@ -19,17 +19,24 @@
 
 
 /* SPEECH BUBBLE ANIMATION */
+
+.sonnyChat{
+    height: 20px;
+    border: #473939 solid 0.5px;
+    padding: 7.5px;
+    vertical-align: bottom;
+}
+
 #speechBubble{
     padding: 7.5px;
-    top: 80px;
+    top: 75px;
     z-index: 3;
-
+    font-size: 25px;
+    min-height: 30px;
     -webkit-transition: width 0.7s, opacity 0.7s; /* Safari */
     transition: width 0.7s , opacity 0.7s;
 }
 .triangle-border.left {
-    margin-left: 0px;
-    margin-right: 5px;
     left: 100px;
 
     display: none;
@@ -110,7 +117,7 @@
 .triangle-border.left:after {
     top: 16px;
     bottom: auto;
-    left: -21px;
+    left: -18px;
     border-width: 9px 21px 9px 0;
     border-color: transparent #fff;
 }
@@ -118,7 +125,7 @@
     content: "";
     position: absolute;
     bottom: -13px;
-    left: 47px;
+    left: 50px;
 
     border-style: solid;
     border-color: #fff transparent;
@@ -127,40 +134,3 @@
 }
 /* speech bubble end */
 
-/* SPEECH TEXT ANIMATION */
-.speechContent p{   
-    font-size: 25px;
-    line-height: 27px;
-    margin: 0px;
-    white-space: nowrap; 
-    overflow: hidden;
-    width: 0;
-
-    animation: type 4s steps(60, end); 
-
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-
-}
-
-.speechContent p:nth-child(2){
-  animation-delay: 5s;  
-}
-
-
-@keyframes type{ 
-  from { width: 0; } 
-  to { width: 100%; } 
-} 
-
-@media (max-width: 321px) {
-    .speechContent p {
-        font-size: 25px;
-    }
-}
-
-
-/* speech text animation */

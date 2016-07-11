@@ -106,17 +106,13 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
 /* kindness screen */
 
 /* PAGE LAYOUT */
-.beach path, .beach rect{
- transition: fill 1s ease;
-}
-
-
 .sky{
   position: absolute;
   top: 0px;
   z-index: 0;
   height: 50vh;
   width:100%;
+
 }
 
 .sea{
@@ -125,23 +121,38 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
   position: absolute;
   bottom: 0px;
   z-index: 0;
-  height: 50vh;
+  height: 100%;
+  top: 100%;
+  margin-top: -120px;
 }
 
-.beach{
+
+.beach-bottom,.beach-top{
   z-index: 3;
   position: absolute;
+  fill: #fffad2;
+  
+   transition: fill 1s ease;
+}
+
+.beach-rect{
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  display: block; 
+  background: #fffad2;
+  position: absolute;
+  z-index: 3;
+  top: 210px;
+  bottom: 75px;
+}
+
+.beach-top{
   top: 180px; 
 }
 
-#beach-path{
-  position: absolute;
-  bottom: 50px;
-}
-
-#beach-rect{
-  height: 633px;
-  width: 716px; 
+.beach-bottom{
+  bottom: 75px; 
 }
 
 .furniture{
@@ -150,6 +161,7 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
   left: 10px; 
   z-index: 4; 
   bottom: 17.5vh;
+  opacity: 0.8;
 }
 
 /* page layout */
@@ -190,9 +202,12 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
   background: #b0ddd6;
 }
 
-.summer .beach path ,.summer .beach rect{
+
+
+.beach-bottom,.beach-top{
   fill: #fffad2;
 }
+
 
 .summer .sea{
   background: #b6e5ed;

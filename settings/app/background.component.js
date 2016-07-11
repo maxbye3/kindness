@@ -1,4 +1,4 @@
-System.register(['angular2/core', './sonny.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './sonny.component', './speech.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './sonny.component'], function(exports_1, cont
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, sonny_component_1;
+    var core_1, sonny_component_1, speech_component_1;
     var BackgroundComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './sonny.component'], function(exports_1, cont
             },
             function (sonny_component_1_1) {
                 sonny_component_1 = sonny_component_1_1;
+            },
+            function (speech_component_1_1) {
+                speech_component_1 = speech_component_1_1;
             }],
         execute: function() {
             BackgroundComponent = (function () {
@@ -59,8 +62,9 @@ System.register(['angular2/core', './sonny.component'], function(exports_1, cont
                     core_1.Component({
                         selector: 'background',
                         templateUrl: 'app/background.component.html',
+                        // templateUrl: 'app/typed.html',
                         styleUrls: ['app/background.component.css'],
-                        directives: [sonny_component_1.SonnyComponent]
+                        directives: [sonny_component_1.SonnyComponent, speech_component_1.sonnySpeech],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], BackgroundComponent);

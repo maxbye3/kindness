@@ -20,8 +20,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             SonnyComponent = (function () {
                 function SonnyComponent() {
-                    this.sonnyState('intro');
                 }
+                SonnyComponent.prototype.ngOnInit = function () {
+                    this.sonnyState("intro");
+                };
                 SonnyComponent.prototype.startTalking = function () {
                     var speechBubble = document.getElementById('speechBubble').style;
                     speechBubble.display = "block";
@@ -46,54 +48,57 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 */
                 SonnyComponent.prototype.sonnyState = function (state) {
                     var _this = this;
+                    this.sonnyImg = document.getElementById("sonnyGif");
                     switch (state) {
                         case "intro":
-                            this.sonnyGif = "./img/sonny/intro.gif?t=" + new Date().getTime();
+                            this.sonnyImg.src = "./img/sonny/intro.gif?t=" + new Date().getTime();
                             setTimeout(function () {
                                 _this.sonnyState("talking");
                             }, 2000);
                             break;
                         case "exit":
-                            this.sonnyGif = "./img/sonny/exit.gif";
+                            console.log('exit');
+                            setTimeout(function () {
+                                _this.stopTalking();
+                                _this.sonnyImg.src = "./img/sonny/exit.gif?t=" + new Date().getTime();
+                                setTimeout(function () { }, 2000);
+                            }, 3000);
                             break;
                         case "talking":
                             this.startTalking();
-                            this.sonnyGif = "./img/sonny/talking.gif";
-                            setTimeout(function () {
-                                _this.sonnyState("idle");
-                            }, 8000);
+                            this.sonnyImg.src = "./img/sonny/talking.gif?t=" + new Date().getTime();
                             break;
                         case "winning":
                             this.stopTalking();
-                            this.sonnyGif = "./img/sonny/winning.gif";
+                            this.sonnyImg.src = "./img/sonny/winning.gif?t=" + new Date().getTime();
                             break;
                         case "bounce":
-                            this.sonnyGif = "./img/sonny/bounce.gif";
+                            this.sonnyImg.src = "./img/sonny/bounce.gif?t=" + new Date().getTime();
                             break;
                         case "checkout":
-                            this.sonnyGif = "./img/sonny/checkout.gif";
+                            this.sonnyImg.src = "./img/sonny/checkout.gif?t=" + new Date().getTime();
                             break;
                         case "yawn":
-                            this.sonnyGif = "./img/sonny/yawn.gif";
+                            this.sonnyImg.src = "./img/sonny/yawn.gif?t=" + new Date().getTime();
                             break;
                         case "idle":
-                            this.sonnyGif = "./img/sonny/idle.gif";
+                            this.sonnyImg.src = "./img/sonny/idle.gif?t=" + new Date().getTime();
                             break;
                         case "idle-blink.gif":
-                            this.sonnyGif = "./img/sonny/idle-blink.gif";
+                            this.sonnyImg.src = "./img/sonny/idle-blink.gif?t=" + new Date().getTime();
                             break;
                         case "idle-look.gif":
-                            this.sonnyGif = "./img/sonny/idle-look.gif";
+                            this.sonnyImg.src = "./img/sonny/idle-look.gif?t=" + new Date().getTime();
                             break;
                         default:
-                            this.sonnyGif = "";
+                            this.sonnyImg.src = "";
                     }
                 };
                 SonnyComponent = __decorate([
                     core_1.Component({
                         selector: 'sonny',
                         templateUrl: 'app/sonny.component.html',
-                        styleUrls: ['app/sonny.component.css']
+                        styleUrls: ['app/sonny.component.css'],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SonnyComponent);
