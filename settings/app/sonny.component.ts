@@ -1,21 +1,24 @@
 import {Component,OnInit} from 'angular2/core';
- import { sonnySpeech } from './speech.component';
+import {SonnyDialogue} from './sonny.dialogue.component';
 
 
 @Component({
   selector: 'sonny',
   templateUrl: 'app/sonny.component.html',
   styleUrls: ['app/sonny.component.css'],
-//   directives: [sonnySpeech]
+ 
 })
 
 
 export class SonnyComponent implements OnInit {
   public sonnyGif;
   sonnyImg : HTMLImageElement; 
+  private SonnyDialogue;
   
   constructor() {
   }
+
+  
 
   ngOnInit() {         
          this.sonnyState("intro");
@@ -64,7 +67,7 @@ export class SonnyComponent implements OnInit {
                 setTimeout(() => {               
                     this.stopTalking();
                     this.sonnyImg.src = "./img/sonny/exit.gif?t=" + new Date().getTime();  
-                    setTimeout(() => {}, 2000);
+                    
                 }, 3000);
             break;
             case "talking":

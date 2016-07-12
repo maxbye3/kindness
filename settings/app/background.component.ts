@@ -1,14 +1,13 @@
 import {Component, OnInit,  ElementRef, Input } from 'angular2/core';
 import {Router} from 'angular2/router';
 import {SonnyComponent} from './sonny.component';
-import {sonnySpeech } from './speech.component';
+import {SonnyDialogue } from './sonny.dialogue.component';
 
 @Component({
   selector: 'background',
   templateUrl: 'app/background.component.html',
-  // templateUrl: 'app/typed.html',
   styleUrls: ['app/background.component.css'],
-  directives: [SonnyComponent,sonnySpeech],
+  directives: [SonnyComponent,SonnyDialogue],
 })
 
 export class BackgroundComponent {
@@ -17,9 +16,8 @@ export class BackgroundComponent {
   private theme = "summer";
   private selectedBackground = "summer";
   private furnitureImg = './img/scenes/summer.gif';
+    
     constructor() {
-      
-
 
       // TEMPORARY
        setTimeout(() => {

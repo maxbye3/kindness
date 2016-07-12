@@ -61,7 +61,6 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                             setTimeout(function () {
                                 _this.stopTalking();
                                 _this.sonnyImg.src = "./img/sonny/exit.gif?t=" + new Date().getTime();
-                                setTimeout(function () { }, 2000);
                             }, 3000);
                             break;
                         case "talking":
