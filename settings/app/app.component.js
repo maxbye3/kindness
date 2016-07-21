@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './background.component', './sonny.dialogue.component', './sonny.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './background.component', './sonny.dialogue.component', './sonny.component', './cal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './background.component', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, background_component_1, sonny_dialogue_component_1, sonny_component_1;
+    var core_1, router_1, background_component_1, sonny_dialogue_component_1, sonny_component_1, cal_component_1;
     var AppComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', 'angular2/router', './background.component', '
             },
             function (sonny_component_1_1) {
                 sonny_component_1 = sonny_component_1_1;
+            },
+            function (cal_component_1_1) {
+                cal_component_1 = cal_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -42,6 +45,7 @@ System.register(['angular2/core', 'angular2/router', './background.component', '
                             background_component_1.BackgroundComponent,
                             sonny_component_1.SonnyComponent,
                             sonny_dialogue_component_1.SonnyDialogue,
+                            cal_component_1.CalComponent,
                             router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,

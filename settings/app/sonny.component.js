@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './weather.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, weather_component_1;
     var SonnyComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (weather_component_1_1) {
+                weather_component_1 = weather_component_1_1;
             }],
         execute: function() {
             SonnyComponent = (function () {
-                function SonnyComponent() {
+                function SonnyComponent(weatherComponent) {
+                    this.weatherComponent = weatherComponent;
                 }
                 SonnyComponent.prototype.ngOnInit = function () {
                     this.sonnyState("intro");
                 };
                 SonnyComponent.prototype.startTalking = function () {
                     var speechBubble = document.getElementById('speechBubble').style;
-                    speechBubble.display = "block";
+                    //speechBubble.display="block";
                     speechBubble.width = "0vw";
                     speechBubble.opacity = ".5";
                     setTimeout(function () {
@@ -36,61 +40,107 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     }, 0);
                 };
                 SonnyComponent.prototype.stopTalking = function () {
+                    document.getElementById("typed").innerHTML = "";
                     var speechBubble = document.getElementById('speechBubble').style;
                     speechBubble.width = "0vw";
                     speechBubble.opacity = "0";
+                };
+                /*
+                 * JIGGLE Sonny ICON
+                 */
+                SonnyComponent.prototype.jiggleIcon = function (img) {
+                    this.weatherComponent.rain(); // tinsel rain 
                     setTimeout(function () {
-                        speechBubble.display = "none";
-                    }, 700);
+                        img.src = "./img/sonny/exit.gif?t=" + new Date().getTime();
+                        document.getElementById('sonnyIcon').style.display = 'initial';
+                        setTimeout(function () {
+                            document.getElementById("sonnyIcon").className += ' jiggleLink';
+                            setTimeout(function () {
+                                document.getElementById("sonnyIcon").className = "menuItem";
+                            }, 2000);
+                        }, 500);
+                    }, 5000);
                 };
                 /*
                 * Changing Sonny Graphic
                 */
                 SonnyComponent.prototype.sonnyState = function (state) {
                     var _this = this;
-                    this.sonnyImg = document.getElementById("sonnyGif");
+                    var sonnyIcon = document.getElementById('sonnyIcon');
+                    var sonnyImg = document.getElementById("sonnyGif");
+                    var sonnyStatic = document.getElementById("sonnyStatic");
                     switch (state) {
                         case "intro":
-                            this.sonnyImg.src = "./img/sonny/intro.gif?t=" + new Date().getTime();
+                            sonnyImg.style.display = 'initial';
+                            sonnyIcon.style.display = 'none';
+                            sonnyStatic.style.display = 'none';
+                            sonnyStatic.src = "./img/sonny/idle.png";
+                            sonnyImg.src = "./img/sonny/intro.gif?t=" + new Date().getTime();
                             setTimeout(function () {
+                                sonnyStatic.style.display = 'intial';
                                 _this.sonnyState("talking");
                             }, 2000);
                             break;
                         case "exit":
-                            console.log('exit');
                             setTimeout(function () {
                                 _this.stopTalking();
-                                _this.sonnyImg.src = "./img/sonny/exit.gif?t=" + new Date().getTime();
+                                sonnyImg.src = "./img/sonny/exit.gif?t=" + new Date().getTime();
+                                setTimeout(function () {
+                                    _this.sonnyState("");
+                                }, 3000);
                             }, 3000);
                             break;
                         case "talking":
                             this.startTalking();
-                            this.sonnyImg.src = "./img/sonny/talking.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/talking.gif?t=" + new Date().getTime();
+                            //sonnyStatic.style.display = 'none';
                             break;
                         case "winning":
                             this.stopTalking();
-                            this.sonnyImg.src = "./img/sonny/winning.gif?t=" + new Date().getTime();
+                            sonnyImg.style.display = "none";
+                            sonnyStatic.style.display = "block";
+                            sonnyIcon.style.display = 'none';
+                            sonnyStatic.src = "./img/sonny/winning.gif?t=" + new Date().getTime();
+                            this.jiggleIcon(sonnyStatic);
+                            break;
+                        case "intro-winning":
+                            this.stopTalking();
+                            sonnyImg.style.display = 'initial';
+                            sonnyIcon.style.display = 'none';
+                            sonnyImg.src = "./img/sonny/intro.gif?t=" + new Date().getTime();
+                            setTimeout(function () {
+                                sonnyImg.src = "./img/sonny/winning.gif?t=" + new Date().getTime();
+                                _this.jiggleIcon(sonnyImg);
+                            }, 2000);
                             break;
                         case "bounce":
-                            this.sonnyImg.src = "./img/sonny/bounce.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/bounce.gif?t=" + new Date().getTime();
                             break;
                         case "checkout":
-                            this.sonnyImg.src = "./img/sonny/checkout.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/checkout.gif?t=" + new Date().getTime();
                             break;
                         case "yawn":
-                            this.sonnyImg.src = "./img/sonny/yawn.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/yawn.gif?t=" + new Date().getTime();
                             break;
                         case "idle":
-                            this.sonnyImg.src = "./img/sonny/idle.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/idle.gif?t=" + new Date().getTime();
                             break;
                         case "idle-blink.gif":
-                            this.sonnyImg.src = "./img/sonny/idle-blink.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/idle-blink.gif?t=" + new Date().getTime();
                             break;
                         case "idle-look.gif":
-                            this.sonnyImg.src = "./img/sonny/idle-look.gif?t=" + new Date().getTime();
+                            sonnyImg.src = "./img/sonny/idle-look.gif?t=" + new Date().getTime();
                             break;
                         default:
-                            this.sonnyImg.src = "";
+                            sonnyImg.src = "./img/sonny/none.png";
+                            // sonny call icon appear
+                            sonnyIcon.style.display = 'initial';
+                            sonnyIcon.className = 'menuItem';
+                            sonnyIcon.style.opacity = "1";
+                            // get rid of sonny gif
+                            sonnyImg.style.display = 'none';
+                            sonnyImg.src = "./img/sonny/none.png";
+                            break;
                     }
                 };
                 SonnyComponent = __decorate([
@@ -98,8 +148,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         selector: 'sonny',
                         templateUrl: 'app/sonny.component.html',
                         styleUrls: ['app/sonny.component.css'],
+                        providers: [weather_component_1.WeatherComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [weather_component_1.WeatherComponent])
                 ], SonnyComponent);
                 return SonnyComponent;
             }());

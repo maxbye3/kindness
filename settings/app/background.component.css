@@ -1,3 +1,8 @@
+#kindnessView {
+  position: absolute;
+  width: 100%;
+}
+
 /*
 * LINKS
 */
@@ -11,27 +16,6 @@
    top: 0px;
 }
 
-.menuItem{
-  float: right;
-    margin: 10px;
-    margin-left: 0px;
-    width: 100px;
-    border: solid black 1px;
-    height: auto;
-    width: 50px;
-    text-align: center;
-    padding-top: 5px;
-    text-transform: uppercase;
-}
-
-.menuItem p{
-    margin: 0px;
-    margin-top: 2.5px;
-    font-size: 18px;
-}
-.menuItem img{
-    height: 30px;
-}
 
 .kindnessCal{
   bottom: 0px;
@@ -42,17 +26,27 @@
   width: 75px;
 }
 
+#sonnyIcon{
+  opacity: 0;
+}
+
 .jiggleLink{
     animation-name: jiggleLink;
     animation-duration: .5s;
-     animation-iteration-count: 3;
+    animation-iteration-count: 3;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: jiggleLink;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-iteration-count: 3;
+    -webkit-animation-fill-mode: forwards;
+    pointer-events: none;
 }
 
 @keyframes jiggleLink {
-    0%   {margin-top: 10px;}
-    25%  {margin-top: 0px;}
-    50%  {margin-top: 20px;}
-    100% {margin-top: 10px;}
+    0%   {margin-top: 10px; opacity: 0;}
+    25%  {margin-top: 0px; opacity: 0.6;}
+    50%  {margin-top: 20px; opacity: 0.6;}
+    100% {margin-top: 10px; opacity: 0.3;}
 }
 
 @media (max-width: 321px) {
@@ -84,24 +78,6 @@
     border: none;
 }
 
-input[type=text],::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  font-family: Kindness;
-}
-input[type=text],::-moz-placeholder { /* Firefox 19+ */
-  font-family: Kindness;
-}
-input[type=text],:-ms-input-placeholder { /* IE 10+ */
-  font-family: Kindness;
-}
-input[type=text],:-moz-placeholder { /* Firefox 18- */
-  font-family: Kindness;
-}
-
-#kindness .submit{
-  text-align: center;
-  font-size: 42px;
-  background: rgba(0,0,0,0.05);
-}
 
 /* kindness screen */
 
@@ -124,6 +100,7 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
   height: 100%;
   top: 100%;
   margin-top: -120px;
+  padding-bottom: 120px;
 }
 
 
@@ -167,15 +144,6 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
 /* page layout */
 
 /* THEME BUTTONS */
-.themeButton{
-    z-index: 5;
-    width: 70%;
-    vertical-align: bottom;
-    margin-top: 20px;
-    font-family: Kindness;
-    font-size: 42px;   
-}
-
 .summer{
     background: #fffad2;
 }
@@ -184,14 +152,8 @@ input[type=text],:-moz-placeholder { /* Firefox 18- */
     background: #fff;
 }
 
-
 .autumn{
   background: #F1E7C3;
-}
-
-.selected{
-  transition: background 2s ease;
-  background: rgba(0,0,0,0.05);
 }
 /*theme buttons*/
 

@@ -3,6 +3,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 import { BackgroundComponent } from './background.component';
 import { SonnyDialogue } from './sonny.dialogue.component';
 import { SonnyComponent } from './sonny.component';
+import { CalComponent } from './cal.component';
+
 
 @Component({
   selector: 'my-app',
@@ -16,6 +18,7 @@ import { SonnyComponent } from './sonny.component';
     BackgroundComponent,
     SonnyComponent,
     SonnyDialogue,
+    CalComponent,
     ROUTER_DIRECTIVES],
   providers: [
     ROUTER_PROVIDERS,

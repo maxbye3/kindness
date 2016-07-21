@@ -7,18 +7,19 @@
     left: -90px;
     top: 50px;
 }
-.sonnyGif,.sonnyStatic{
+.sonnyGif,#sonnyStatic{
     height: 150px;
 }
 
-.sonnyStatic{
+#sonnyStatic{
+  display: none;  
   position: absolute;
   top: 0px;
 }
 
 
 
-/* SPEECH BUBBLE ANIMATION */
+/* SPEECH BUBBLE */
 
 .sonnyChat{
     height: 20px;
@@ -28,6 +29,7 @@
 }
 
 #speechBubble{
+    opacity: 0;
     padding: 7.5px;
     top: 75px;
     z-index: 3;
@@ -39,7 +41,6 @@
 .triangle-border.left {
     left: 100px;
 
-    display: none;
     -webkit-animation-name: speechBorder;
     -webkit-animation-duration: .5s;
     -webkit-animation-iteration-count: 1;
@@ -89,29 +90,9 @@
     bottom: auto;
     left: -30px;
     
-    -webkit-animation-name: speechTriangle;
-    -webkit-animation-duration: .5s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-delay: .5s;
-
-    animation-name: speechTriangle;
-    animation-duration: .5s;
-    animation-iteration-count: 1;
-    animation-delay: .5s;
-
-    -webkit-animation-fill-mode: forwards;
-    -moz-animation-fill-mode: forwards;
-    -ms-animation-fill-mode: forwards;
-    -o-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-
     border-width: 0;
     border-color: transparent #FCBA40;
-}
-
-@keyframes speechTriangle {
-    from {border-width: 5px 30px 5px 0;}
-    to {border-width: 15px 30px 15px 0;}
+    border-width: 15px 30px 15px 0;
 }
 
 .triangle-border.left:after {

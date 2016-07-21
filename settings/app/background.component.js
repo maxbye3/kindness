@@ -1,4 +1,4 @@
-System.register(['angular2/core', './sonny.component', './sonny.dialogue.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './sonny.component', './sonny.dialogue.component', './cal.component', './go.cal.component', './weather.component', './kindness.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, sonny_component_1, sonny_dialogue_component_1;
+    var core_1, sonny_component_1, sonny_dialogue_component_1, cal_component_1, go_cal_component_1, weather_component_1, kindness_service_1;
     var BackgroundComponent;
     return {
         setters:[
@@ -22,19 +22,91 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
             },
             function (sonny_dialogue_component_1_1) {
                 sonny_dialogue_component_1 = sonny_dialogue_component_1_1;
+            },
+            function (cal_component_1_1) {
+                cal_component_1 = cal_component_1_1;
+            },
+            function (go_cal_component_1_1) {
+                go_cal_component_1 = go_cal_component_1_1;
+            },
+            function (weather_component_1_1) {
+                weather_component_1 = weather_component_1_1;
+            },
+            function (kindness_service_1_1) {
+                kindness_service_1 = kindness_service_1_1;
             }],
         execute: function() {
             BackgroundComponent = (function () {
-                function BackgroundComponent() {
+                function BackgroundComponent(kindnessService, sonnyComponent, sonnyDialogue) {
                     this.showStyle = false;
                     this.theme = "summer";
                     this.selectedBackground = "summer";
                     this.furnitureImg = './img/scenes/summer.gif';
-                    // TEMPORARY
-                    setTimeout(function () {
-                        document.getElementById('themeChange').style.display = 'none';
-                    }, 10); // temp
+                    this.calVisit = 0;
+                    this.kindnessService = kindnessService;
+                    this.sonnyComponent = sonnyComponent;
+                    this.sonnyDialogue = sonnyDialogue;
                 }
+                BackgroundComponent.prototype.ngOnInit = function () {
+                };
+                /*
+                * CHECK SUBMISSION
+                */
+                BackgroundComponent.prototype.kindessSubmit = function () {
+                    document.getElementById("submitCheck").style.display = "block";
+                    var inputPerson = document.getElementById("inputPerson");
+                    var inputKindness = document.getElementById("inputKindness");
+                    if (inputPerson.value == "" && inputKindness.value == "") {
+                        console.log("Fields empty");
+                        document.getElementById("kindnessText").style.color = "red";
+                        document.getElementById("whoText").style.color = "red";
+                        inputPerson.placeholder = "Please enter a person or recipient into this field!";
+                        inputKindness.placeholder = "Please record a kindness you performed into this field!";
+                    }
+                    else if (inputPerson.value == "") {
+                        console.log("No Who");
+                        document.getElementById("whoText").style.color = "red";
+                        document.getElementById("kindnessText").style.color = "black";
+                        inputPerson.placeholder = "Please enter a person or recipient into this field!";
+                    }
+                    else if (inputKindness.value == "") {
+                        console.log("No Kindness");
+                        document.getElementById("kindnessText").style.color = "red";
+                        document.getElementById("whoText").style.color = "black";
+                        inputKindness.placeholder = "Please record a kindness you performed into this field!";
+                    }
+                    else {
+                        this.kindnessSuccess(); // winning animation
+                        this.kindnessService.saveData(inputPerson.value, inputKindness.value); // call in the service to deal with data
+                    }
+                };
+                // SUBMISSION SUCCESSFUL
+                BackgroundComponent.prototype.kindnessSuccess = function () {
+                    if (document.getElementById('sonnyIcon').style.display == "none") {
+                        this.sonnyComponent.sonnyState("winning");
+                        this.sonnyDisclaimer(["Congrats on recording today's kindness!!"], 2000);
+                    }
+                    else {
+                        this.sonnyComponent.sonnyState("intro-winning");
+                        this.sonnyDisclaimer(["Congrats on recording today's kindness!!"], 2000);
+                    }
+                    document.getElementById("doneView").style.display = "block";
+                    setTimeout(function () {
+                        document.getElementById("kindnessView").style.display = "none";
+                    }, 500);
+                    this.sonnyDialogue.transitionViews("kindnessView", "doneView");
+                };
+                BackgroundComponent.prototype.sonnyDisclaimer = function (phraseArray, timeout) {
+                    var _this = this;
+                    // winning disclaimer
+                    setTimeout(function () {
+                        _this.sonnyDialogue.sonnySpeech(true, phraseArray);
+                        _this.sonnyComponent.startTalking();
+                        setTimeout(function () {
+                            _this.sonnyComponent.stopTalking();
+                        }, 6000);
+                    }, timeout);
+                };
                 /*
                 * Changing the theme
                 */
@@ -63,9 +135,10 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
                         selector: 'background',
                         templateUrl: 'app/background.component.html',
                         styleUrls: ['app/background.component.css'],
-                        directives: [sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue],
+                        directives: [sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue, cal_component_1.CalComponent, go_cal_component_1.GoCalComponent, weather_component_1.WeatherComponent],
+                        providers: [kindness_service_1.KindnessService, sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue, weather_component_1.WeatherComponent, cal_component_1.CalComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [kindness_service_1.KindnessService, sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue])
                 ], BackgroundComponent);
                 return BackgroundComponent;
             }());
