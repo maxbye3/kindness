@@ -25,12 +25,13 @@
 <script src="https://code.angularjs.org/2.0.0-beta.7/angular2.min.js"></script>
 <script src="https://code.angularjs.org/2.0.0-beta.7/http.min.js"></script>
 <script src="https://code.angularjs.org/2.0.0-beta.7/router.dev.js"></script>
-    <script src="/kindness/settings/app/angular-not-working.js"></script>
-    <script src="/kindness/settings/app/settings-not-angular.js"></script>
+<script src="/kindness/settings/app/angular-not-working.js"></script>
+<script src="/kindness/settings/app/settings-not-angular.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({
+        baseURL: 'kindness/settings/',
         packages: {        
           app: {
             format: 'register',
@@ -38,7 +39,7 @@
           }
         }
       });
-      System.import('kindness/settings/app/main.js')
+      System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
     
