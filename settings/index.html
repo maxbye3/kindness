@@ -31,14 +31,15 @@
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({
+        baseURL: 'kindness/settings/',
         packages: {        
-          kindness/settings: {
+          app: {
             format: 'register',
             defaultExtension: 'js'
           }
         }
       });
-      System.import('kindness/settings/app/main')
+      System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
     
