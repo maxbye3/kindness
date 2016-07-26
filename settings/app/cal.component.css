@@ -67,10 +67,12 @@
 /* SPEECH BUBBLE */
 .speechDiv{
     position: absolute;
-    right: 10%;
+    right: 5%;
     bottom: 4vh;
     max-width: 58%;
 }
+
+
 
 
 #calBubble{
@@ -101,7 +103,7 @@
     -o-animation-fill-mode: forwards;
     animation-fill-mode: forwards;
 
-    border: solid #FCBA40;    
+    border: solid #c8523b;    
     border-width: 0px;
 }
 
@@ -150,7 +152,7 @@
     animation-fill-mode: forwards;
 
     border-width: 0;
-    border-color: transparent #FCBA40;
+    border-color: transparent #c8523b;
 }
 
 @keyframes speechTriangle {

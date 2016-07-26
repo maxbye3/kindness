@@ -31,7 +31,7 @@ System.register(['angular2/core', './go.cal.component'], function(exports_1, con
                 KindnessComplete = __decorate([
                     core_1.Component({
                         selector: 'kindness-complete',
-                        template: "\n<!-- KINDNESS Done Screen -->\n    <div id='doneView' style=\"display: none;\">\n            \n            <h1> Your daily kindness is complete.\n            <br> New day starts in {{hoursLeft}} hours. \n            <br>In the meantime, plan somein' nice or... \n            <br>\n            <div (click)=\"goCal()\"\n            style=\"\n            border: black solid 2px; padding: 5px; MARGIN-TOP: 7.5PX;\"> \n            check progress \n            </div>\n            \n    <!-- done screen-->\n\n  ",
+                        template: "\n<!-- KINDNESS Done Screen -->\n    <div id=\"calVictory\" style=\"display: none;\"></div>\n    <div id='doneView' style=\"display: none;\">\n            \n            <h1> Your daily kindness is complete.\n            <br> New day starts in {{hoursLeft}} hours. \n            <br>In the meantime, plan somein' nice or... \n            <br>\n            <div (click)=\"goCal()\"\n            style=\"\n            border: black solid 2px; padding: 5px; MARGIN-TOP: 7.5PX;\"> \n            check progress \n            </div>\n            \n    <!-- done screen-->\n\n  ",
                         styleUrls: ["app/sonny.dialogue.component.css"],
                         providers: [go_cal_component_1.GoCalComponent]
                     }), 

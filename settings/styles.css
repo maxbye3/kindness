@@ -12,7 +12,9 @@
 body{
   margin: 0;
   font-family: Kindness;
+  overflow:hidden;
 }
+
 
 .flip{
     -moz-transform: scaleX(-1);
@@ -111,12 +113,21 @@ body{
     z-index: 1;
 }
 
+#snow{
+    display: block; 
+    width: 20px; 
+    height: 20px; 
+    position: absolute; 
+    z-index: 1;
+}
+
 @keyframes rain1 {
     0% {
         top: 0px;
          -ms-transform: rotate(10deg); /* IE 9 */
         -webkit-transform: rotate(10deg); /* Chrome, Safari, Opera */
         transform: rotate(10deg);
+        margin-left: 0px;
     }
     15%{
         -ms-transform: rotate(-20deg); /* IE 9 */
@@ -142,6 +153,7 @@ body{
         -ms-transform: rotate(0deg); /* IE 9 */
         -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
         transform: rotate(0deg);
+        margin-left: -100px;
     }
 }
 
@@ -151,6 +163,7 @@ body{
          -ms-transform: rotate(-10deg); /* IE 9 */
         -webkit-transform: rotate(-10deg); /* Chrome, Safari, Opera */
         transform: rotate(-10deg);
+        margin-left: 0px;
     }
     15%{
         -ms-transform: rotate(10deg); /* IE 9 */
@@ -161,6 +174,7 @@ body{
          -ms-transform: rotate(-90deg); /* IE 9 */
         -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
         transform: rotate(-90deg);
+        margin-left: -20px;
     }
     75%{
         -ms-transform: rotate(90deg); /* IE 9 */
@@ -176,28 +190,81 @@ body{
         -ms-transform: rotate(0deg); /* IE 9 */
         -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
         transform: rotate(0deg);
+        margin-left: 100px;
     }
 }
 
 /*weather end*/
 /* ACHIEVEMENT SQUARES */
 
+/*
+* WINTER HOUSE
+*/
+#winterHouse{
+    position: absolute;
+    z-index: 1;
+    left: 50px;
+    bottom: 50px;
+}
+
+#winterHouse .house{
+        width: 250px;
+        bottom: 0px;
+}
+
+#winterHouse .smoke{
+    width: 100px;
+    margin-top: -309px;
+    margin-left: 110px;
+    position: absolute;
+}
+
+/*winter house*/
+/* 
+BOAT 
+*/
+#boatContainer{
+    position: absolute;
+    z-index: 1;
+    -webkit-animation-delay: 12s; /* Chrome, Safari, Opera */
+    animation-delay: 12s;
+    -webkit-animation: boatMovement 25s infinite; /* Chrome, Safari, Opera */
+    animation: boatMovement 25s infinite;
+}
+
+#boatContainer img{
+  width: 200px;
+  left: 100%;
+}
+
+@keyframes boatMovement {
+ 0%{
+    left: 100%;
+    bottom: 415px;
+ }
+ 100% {
+    left: -200px;
+    bottom: 300px;
+ }
+}
+/*boat*/
+
+
 /* task-view */
  
 #task-view{
-    z-index: 1;
+    z-index: 2;
     top: 80px;
     position: absolute;
     left: 10%;
     width: 80%;
     height: 80%;
-    border: green solid 2px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
 
 
-#task-view .square, #task-view .more {
+#weekView .more, #task-view .square, #task-view .more {
     width: 60%;
     height: auto;
     background: #FFFAD2;
@@ -208,7 +275,13 @@ body{
     padding-bottom: 5px;
 }
 
-#task-view a{
+#weekView .more{
+    width: 100%;
+    margin-top: -25px;
+    opacity: .9;
+}
+
+#weekView a, #task-view a{
     pointer-events: none;    
 }
 
@@ -221,19 +294,19 @@ body{
 #task-view .square p, #task-view .more p {
     margin-top: 0px;
     margin-bottom: 0px;
-     font-size: 6vw;
+    font-size: 6vw;
 }
 
-#task-view .more{
+#weekView .more,#task-view .more{
     padding: 5px;
     display: none;
 }
 
-#task-view .more p{
+#weekView .more p,#task-view .more p{
     text-align: left;    
 }
 
-#task-view .more h6{
+#weekView .more h6,#task-view .more h6{
     border: black solid 1px;
     padding: 5px;
     text-align: center;
@@ -242,7 +315,7 @@ body{
     margin-bottom: 0px;
 }
 
-#task-view input{
+#weekView input,#task-view input{
     font-size: 5vw;
 }
 
@@ -251,14 +324,13 @@ body{
 
 /* week-view */
 #weekView{
-    z-index: 1;
+    z-index: 2;
     display: none;
     top: 80px;
     position: absolute;
     left: 10%;
     width: 80%;
     height: 80%;
-    border: green solid 2px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }

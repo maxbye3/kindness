@@ -124,6 +124,7 @@
   bottom: 75px;
 }
 
+
 .beach-top{
   top: 180px; 
 }
@@ -141,9 +142,48 @@
   opacity: 0.8;
 }
 
+/*
+BIRDS
+*/
+#birdContainer{
+position: absolute;
+top: 50px;
+left: -350px;
+z-index: 1;
+-webkit-transition: left 40s; /* Safari */
+transition: left 40s;
+transition-timing-function: linear;
+-webkit-transition-timing-function: linear;
+}
+
+#bird1{
+  width: 70px;
+  left: 150px;
+  top: 50px;
+  position: absolute;
+}
+
+#bird2{
+  width: 80px;
+  left: 250px;
+  position: absolute;
+}
+/*birds*/
+
+/* iNPUTS */
+#kindnessView #input{
+  text-align: left;
+}
+/* inputs */
+
+
 /* page layout */
 
 /* THEME BUTTONS */
+#themeChange{
+  display: none;
+}
+
 .summer{
     background: #fffad2;
 }
@@ -181,8 +221,12 @@
   background: #EAF7FF;
 }
 
-.winter .beach path ,.winter .beach rect{
+.winter .beach-bottom g,.winter .beach-top g{
   fill: #FFFFFF;
+}
+
+.winter .beach-rect{
+  background: #FFFFFF;
 }
 
 .winter .sea{
@@ -202,3 +246,10 @@
   background: #F6805C
 }
 /*  theme end */
+
+
+
+
+.selected{
+  background: rgba(0,0,0,0.1);
+}

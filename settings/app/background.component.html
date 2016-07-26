@@ -1,9 +1,10 @@
-<div class="kindessShowMore">
+<settings-component></settings-component>
 
+<div class="kindessShowMore">
   <!--more button-->
-  <div class="menuItem" id="seeMore">
+  <div class="menuItem" id="seeMore" (click)="settings()">
     <a>
-      <img src="./img/icons/home.png">
+      <img src="./img/icons/more.png">
       <p>More</p>
     </a>
   </div>
@@ -16,14 +17,18 @@
     </a>
   </div>
 
-
-
 </div>
 
 <go-cal></go-cal>
 
 <weather></weather>
 <sonny></sonny>
+
+<div id="birdContainer">
+  <img id="bird1" src="./img/scenes/bird.gif">
+  <img id="bird2" src="./img/scenes/bird.gif">
+</div>
+
 
 <!--Content-->
 <div class="centerContent">
@@ -32,13 +37,14 @@
 
     <div id="kindnessView">
       <form action="" id="kindness" style="width: 80%">
-        <div style="text-align: left;">
-          <h1 id='whoText'> <img src="./img/icons/heart.png" width="40px"> For Who
-          </h1>
+        <div id="input">
+          
+          <h1 id='whoText'> <img src="./img/icons/heart.png" width="40px"> For Who</h1>
           <input class="input" type="text" id="inputPerson" placeholder="Who did you do a kindness for?">
 
           <h1 id='kindnessText'> <img src="./img/icons/messenger.png" width="40px"> Kindness</h1>
           <input class="input" type="text" id="inputKindness" placeholder="What was the kindness?">
+       
         </div>
 
         <div class="themeButton selected" (click)="kindessSubmit()">
@@ -56,7 +62,7 @@
 
 
     <!-- Theme Change -->
-    <div id='themeChange' style='display: none'>
+    <div id='themeChange'>
       <div class="themeButton summer" [class.selected]="selectedBackground == 'summer'" (click)="theme = 'summer'; selectButton('summer');">
         summer
       </div>
@@ -65,9 +71,15 @@
         winter
       </div>
 
-      <div class="themeButton autumn" [class.selected]="selectedBackground == 'autumn'" (click)="theme = 'autumn'; selectButton('autumn');">
+      <!--<div class="themeButton autumn" [class.selected]="selectedBackground == 'autumn'" (click)="theme = 'autumn'; selectButton('autumn');">
         autumn
+      </div>-->
+
+
+      <div class="themeButton autumn" (click)="themeBack()">
+        back
       </div>
+
     </div>
     <!--theme-change-->
 

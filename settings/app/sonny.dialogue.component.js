@@ -39,8 +39,13 @@ System.register(['angular2/core', './sonny.component', './kindness-complete.comp
                     // setTimeout(() => {  
                     //     document.getElementById("kindnessView").style.display = 'none';
                     // }, 0); 
-                    // this.greeting(false,["Hello! Welcome!<br>This is the prototype of the Kindness App!","Click this icon <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> if you need my help."]);       
-                    this.greeting(false, ["Hello! "]);
+                    var victoryTrue = document.getElementById("doneView").style.display != "none";
+                    if (!victoryTrue) {
+                        this.greeting(false, ["Hello! Welcome!<br>This is the prototype of the Kindness App!", "Click this icon <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> if you need my help."]);
+                    }
+                    else {
+                        this.greeting(false, ["Welcome Back!<br>You've submitted your daily kindness", "However, there's more to explore. Click <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> if you need my help."]);
+                    }
                     setTimeout(function () {
                         _this.jiggleIcon();
                     }, 8000);
@@ -100,7 +105,7 @@ System.register(['angular2/core', './sonny.component', './kindness-complete.comp
                     console.log("provide kidness example");
                     this.transitionViews("helpView", "kindnessView");
                     // sony asks if this okay
-                    this.sonnySpeech(true, ["Here's something you could do.. Feel free to edit the act if it's not quite right.."]);
+                    this.sonnySpeech(false, ["Here's something you could do.. Feel free to edit the act if it's not quite right.."]);
                     // placeholders edited        
                     document.getElementById("inputPerson").value = "folks";
                     document.getElementById("inputKindness").value = "call them and catch up";
@@ -116,10 +121,24 @@ System.register(['angular2/core', './sonny.component', './kindness-complete.comp
                         "I know.. It's a bit strange. I think it's some psychological miswiring. Luckily, we're working through it.",
                         "Seriously though, thanks for taking the time.", "All feedback is used to improve the app."]);
                 };
+                SonnyDialogue.prototype.launchBirds = function () {
+                    var _this = this;
+                    // console.log("launch birds");
+                    setTimeout(function () {
+                        document.getElementById("birdContainer").style.left = "100%";
+                    }, 500);
+                    setTimeout(function () {
+                        document.getElementById("birdContainer").style.left = "-400px";
+                    }, 50000);
+                    setTimeout(function () {
+                        _this.launchBirds();
+                    }, 100000);
+                };
                 /*
                 * SONNY HELP
                 */
                 SonnyDialogue.prototype.intHelp = function () {
+                    this.launchBirds();
                     var sonny = document.getElementById("sonnyIcon");
                     var ctx = this;
                     document.getElementById("typed").innerHTML = "";
@@ -208,7 +227,7 @@ System.register(['angular2/core', './sonny.component', './kindness-complete.comp
                 SonnyDialogue = __decorate([
                     core_1.Component({
                         selector: 'sonny-speech',
-                        template: "\n    <kindness-complete></kindness-complete>\n    <!-- Help Screen -->\n    <div id='helpView'>\n            <div class=\"themeButton selected\" (click)=\"giveExample()\">\n                give me an example kindness\n            </div>\n\n            <div class=\"themeButton selected\" >\n                show me the tour again\n            </div>\n\n            <div class=\"themeButton selected\" (click)=\"contactme()\">\n            I have a question \n            </div>\n\n            <div class=\"themeButton selected\" (click)=\"goBack('help')\">\n                go back\n            </div>\n        </div>\n    <!--help screen-->\n\n    <!-- Contact View -->\n    <div id=\"contactView\" style=\"position: absolute\">\n        <form action=\"\" id=\"kindness\" style=\"width: 80%\">\n          <div style=\"text-align: left;\">\n            <h3>Your Email</h3>\n            <input class=\"input\" type=\"text\" id=\"inputPerson\" placeholder=\"optional\">\n            \n\n            <h3>Message </h3>\n            <input class=\"input\" type=\"text\" id=\"inputMessage\" placeholder=\"Leave thoughts, feelings, death threats, comments and/or feedback here\">\n           \n          </div>\n\n          <div class=\"themeButton selected\">\n            SUBMIT\n          </div>\n\n          <div class=\"themeButton selected\" (click)=\"goBack('email')\">\n                go back\n            </div>\n\n\n        </form>\n      </div><!-- contact view -->\n    ",
+                        template: "\n    <kindness-complete></kindness-complete>\n    <!-- Help Screen -->\n    <div id='helpView'>\n            <div class=\"themeButton selected\" (click)=\"giveExample()\">\n                give me an example kindness\n            </div>\n\n            <div class=\"themeButton selected\" >\n                show me the tour again\n            </div>\n\n            <div class=\"themeButton selected\" (click)=\"contactme()\">\n            I have a question \n            </div>\n\n            <div class=\"themeButton selected\" (click)=\"goBack('help')\">\n                go back\n            </div>\n        </div>\n    <!--help screen-->\n\n    <!-- Contact View -->\n    <div id=\"contactView\" style=\"position: absolute\">\n        <form action=\"\" id=\"kindness\" style=\"width: 80%\">\n          <div style=\"text-align: left;\">\n            <h3>Your Email</h3>\n            <input class=\"input\" type=\"text\" id=\"inputOptional\" placeholder=\"optional\">\n            \n\n            <h3>Message </h3>\n            <input class=\"input\" type=\"text\" id=\"inputMessage\" placeholder=\"Leave thoughts, feelings, death threats, comments and/or feedback here\">\n           \n          </div>\n\n          <div class=\"themeButton selected\">\n            SUBMIT\n          </div>\n\n          <div class=\"themeButton selected\" (click)=\"goBack('email')\">\n                go back\n            </div>\n\n\n        </form>\n      </div><!-- contact view -->\n    ",
                         styleUrls: ["app/sonny.dialogue.component.css"],
                         directives: [kindness_complete_component_1.KindnessComplete],
                         providers: [sonny_component_1.SonnyComponent, kindness_service_1.KindnessService]

@@ -26,16 +26,6 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                     this.kindnessService = kindnessService;
                 }
                 CalComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    jQuery(".clickTest").on("click", "button", function (event) { return _this.test(); });
-                    jQuery(".clickTest").click(function () { return _this.test(); });
-                };
-                CalComponent.prototype.test = function () {
-                    alert('works'); // "undefined"
-                    console.log('works');
-                };
-                CalComponent.prototype.viewDetails = function () {
-                    console.log("please work");
                 };
                 /*
                  * Go To Kindness View
@@ -61,7 +51,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                 */
                 CalComponent.prototype.victoryChat = function (phaseArray) {
                     var _this = this;
-                    var victoryTrue = document.getElementById("doneView").style.display != "none";
+                    var victoryTrue = document.getElementById("calVictory").style.display != "none";
                     if (victoryTrue) {
                         this.calSpeech(true, ["Congratulations...."]);
                         setTimeout(function () {
@@ -92,6 +82,34 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
     no matter how small tomorrow.</p>\
     </div>\
     ";
+                    function weekView() {
+                        function limitChar(string) {
+                            if (string.length > 40) {
+                                return string.substring(0, 40);
+                            }
+                            return string;
+                        }
+                        document.getElementById("weekView").style.display = 'initial';
+                        document.getElementById("task-view").style.display = 'none';
+                        var actions = [];
+                        // console.log('length '+kindnessArray.length);
+                        // test content
+                        for (var i = 0; i < kindnessArray.length; i++) {
+                            var kindAction = kindnessArray[i];
+                            kindAction = limitChar(kindAction);
+                            actions.push("<div class='square task" + i + "'>\
+          <b class='kindness" + i + "'>" + kindAction + "</b>  . . .  <span onclick='makeVisible(" + i + ")'><a href=''>More Details</a></span>\
+          </div>\
+          <div class='more taskDetail" + i + "'>\
+          <p class='kindness'>" + kindnessArray[i] + "&nbsp;<span onclick='editText(\"kindness\",\"" + kindnessArray[i] + "\"," + i + ")'><a href=''>(edit)</a></span></p>\
+          <p class='who'>" + whoArray[i] + "&nbsp;<span onclick='editText(\"who\",\"" + whoArray[i] + "\"," + i + ")'><a href=''>(edit)</a></span></p>\
+          <p class='date'>" + dateArray[i] + "&nbsp;<span onclick='editText(\"date\",\"" + dateArray[i] + "\"," + i + ")'><a href=''>(edit)</a></span></p>\
+          <h6 class='delete' onclick='deleteData(" + i + ")'>delete day</h6>\
+          </div>\
+         ");
+                        }
+                        document.getElementById("weekView").innerHTML = "<center>" + actions + "</center>";
+                    }
                     function createView(kindnessIncomplete) {
                         taskView.style.display = 'block';
                         var kindnesslist = '';
@@ -105,7 +123,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
           <div class='more taskDetail" + i + "'>\
           <p class='kindness'>" + kindnessArray[i] + "&nbsp;<span onclick='editText(\"kindness\",\"" + kindnessArray[i] + "\"," + i + ")'><a href=''>(edit)</a></span></p>\
           <p class='who'>" + whoArray[i] + "&nbsp;<span onclick='editText(\"who\",\"" + whoArray[i] + "\"," + i + ")'><a href=''>(edit)</a></span></p>\
-          <p>" + dateArray[i] + "&nbsp;<span><a href=''>(edit)</a></span></p>\
+          <p class='date'>" + dateArray[i] + "&nbsp;<span onclick='editText(\"date\",\"" + dateArray[i] + "\"," + i + ")'><a href=''>(edit)</a></span></p>\
           <h6 class='delete' onclick='deleteData(" + i + ")'>delete day</h6>\
           </div>\
           ";
@@ -153,7 +171,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             // taskView.innerHTML = "<center>"+kindnessComplete+kindnessComplete+kindnessIncomplete+"</center>";
                             break;
                         case 3:
-                            this.victoryChat(["Three acts..<br>Looks like we're doing pretty well.."]);
+                            this.victoryChat(["Congrats on completing the three day challenge!", "Bet <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> is proud of you.. I'm not. I'm twice as kind as you."]);
                             // kindnessIncomplete = "\
                             //   <div class='square'>\
                             //   <h3>Nice one!</h3>\
@@ -164,7 +182,8 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             createView("");
                             break;
                         case 4:
-                            this.calSpeech(true, ["Well.. well.. we even had to change the view to accomodate"]);
+                            this.calSpeech(true, ["Well.. well.. we even had to change the view to accomodate..",
+                                "You've filled out more than half of the week. Keep it up.",]);
                             // kindnessIncomplete = "\
                             //     <div class='square'>\
                             //     <h3>More than half the week!</h3>\
@@ -175,14 +194,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             weekView();
                             break;
                         case 5:
-                            this.calSpeech(true, ["Bet we're feel pretty good about yourself, with all this racked up"]);
-                            kindnessIncomplete = "\
-          <div class='square'>\
-          <h3>Keep up the Streak!</h3>\
-          <p>Try and reflect on a kidness <br>\
-          no matter how small tomorrow.</p>\
-          </div>\
-      ";
+                            this.calSpeech(true, ["Bet we're feel pretty good about yourself, with all this kind karma racked up..."]);
                             weekView();
                             break;
                         case 6:
@@ -197,7 +209,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             weekView();
                             break;
                         case 7:
-                            this.calSpeech(true, ["That's a whole week of kindness! Making the world a better place friend"]);
+                            this.calSpeech(true, ["That's a whole week of kindness!", "Making the world a better place friend"]);
                             kindnessIncomplete = "\
           <div class='square'>\
           <h3>Week Complete!</h3>\
@@ -206,29 +218,6 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
           </div>\
       ";
                             break;
-                    }
-                    function weekView() {
-                        function limitChar(string) {
-                            if (string.length > 40) {
-                                return string.substring(0, 40);
-                            }
-                            return string;
-                        }
-                        document.getElementById("weekView").style.display = 'initial';
-                        document.getElementById("taskView").style.display = 'none';
-                        var actions = [];
-                        console.log('length ' + kindnessArray.length);
-                        // test content
-                        for (var i = 0; i < kindnessArray.length; i++) {
-                            var kindAction = kindnessArray[i];
-                            kindAction = limitChar(kindAction);
-                            actions.push('<div class="square">\
-          <b>' + kindAction + '  . . .  </b><a href="#">More Details</a>\
-          </div>\
-         ');
-                            console.log(actions[i]);
-                        }
-                        document.getElementById("weekView").innerHTML = "<center>" + actions + "</center>";
                     }
                 };
                 CalComponent.prototype.callCaly = function () {
@@ -250,16 +239,17 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                 CalComponent.prototype.calyCheck = function () {
                     var _this = this;
                     document.getElementById("calyCall").style.display = "none";
-                    var victoryTrue = document.getElementById("doneView").style.display != "none";
+                    var victoryTrue = document.getElementById("calVictory").style.display != "none";
                     if (victoryTrue) {
                         clearTimeout(this.calyTimeout);
                         this.calyState("winning");
                         setTimeout(function () {
-                            _this.calyState("chatIntro");
+                            _this.calyState("idle");
+                            document.getElementById("calVictory").style.display = "none";
                         }, 3500);
                     }
                     else {
-                        this.calyState("chatIntro");
+                        this.calyState("idle");
                     }
                 };
                 /*
@@ -281,7 +271,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                                 window.scrollTo(0, document.body.scrollHeight); // scroll to bottom of page
                                 calyImg.style.right = "0px";
                                 _this.calyTimeout = setTimeout(function () {
-                                    // this.calyState("idle");
+                                    window.scrollTo(0, document.body.scrollHeight); // scroll to bottom of page             
                                     _this.calyCheck();
                                 }, 1700);
                             }, 700);
@@ -291,12 +281,12 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             break;
                         case "chat":
                             calyImg.src = "./img/caly/chat.gif?t=" + new Date().getTime();
-                            setTimeout(function () {
-                                _this.calyState("chatOutro");
-                            }, 4000);
+                            // setTimeout(() => { 
+                            //    this.calyState("chatOutro");
+                            //  },4000)  
                             break;
                         case "chatIntro":
-                            console.log("chat intro");
+                            //  console.log("chat intro");
                             calyImg.src = "./img/caly/chat-intro.gif?t=" + new Date().getTime();
                             this.calyTimeout = setTimeout(function () {
                                 _this.calyState("chat");
@@ -306,7 +296,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             calyImg.src = "./img/caly/chat-outro.gif?t=" + new Date().getTime();
                             setTimeout(function () {
                                 _this.calyState("idle");
-                            }, 800);
+                            }, 1000);
                             break;
                         case "phone":
                             calyImg.src = "./img/caly/phone.gif?t=" + new Date().getTime();
@@ -330,11 +320,11 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             calyImg.src = "./img/caly/winning.gif?t=" + new Date().getTime();
                             break;
                         case "idle":
-                            console.log('idle');
+                            // console.log('idle');
                             calyImg.src = "./img/caly/idle.gif?t=" + new Date().getTime();
                             this.calyTimeout = setTimeout(function () {
                                 _this.calyState("phoneIntro");
-                            }, 30000);
+                            }, 120000);
                             break;
                         case "blink":
                             calyImg.src = "./img/caly/blink.gif?t=" + new Date().getTime();
@@ -344,29 +334,19 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             document.getElementById("calType").innerHTML = ""; // remove text from bubble
                             this.calSpeech(true, ['one second...', 'Just updating my status..']);
                             /* INT Temp Cal Animation Graphic (id=calyPhone) */
-                            setTimeout(function () {
+                            this.calyTimeout = setTimeout(function () {
                                 calyImg.style.display = "none"; // turn off regular cal
                                 calyPhone.style.display = "block";
                                 calyPhone.style.opacity = '1';
                                 /* Animate calyPhone */
                                 calyPhone.src = "./img/caly/phone-intro.gif?t=" + new Date().getTime();
-                                setTimeout(function () {
+                                _this.calyTimeout = setTimeout(function () {
                                     calyPhone.src = "./img/caly/phone.gif?t=" + new Date().getTime();
-                                    setTimeout(function () {
-                                        _this.calSpeech(false, ["hm.. you haven't actually done anything new have you?", "Listen bud, I'm a busy guy so don't waste my time, capeesh?"]);
+                                    _this.calyTimeout = setTimeout(function () {
                                         calyPhone.src = "./img/caly/phone-outro.gif?t=" + new Date().getTime();
-                                        setTimeout(function () {
-                                            calyPhone.src = "./img/caly/chat-intro.gif?t=" + new Date().getTime();
-                                            setTimeout(function () {
-                                                calyPhone.src = "./img/caly/chat.gif?t=" + new Date().getTime();
-                                                setTimeout(function () {
-                                                    calyPhone.src = "./img/caly/chat-outro.gif?t=" + new Date().getTime();
-                                                    setTimeout(function () {
-                                                        calyExit(calyPhone);
-                                                    }, 1000); // exit chat to outro func 
-                                                }, 10000); // chatting away
-                                            }, 1000); // enter chat mode
-                                        }, 2000); // put down phone
+                                        _this.calyTimeout = setTimeout(function () {
+                                            calyExit(calyPhone);
+                                        }, 5000); // exit chat to outro func 
                                     }, 8000); // using phone
                                 }, 3000); // intro phone
                             }, 800); // make visible calyPhone
@@ -399,6 +379,7 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                                 calyImgType.className = "";
                                 document.getElementById("calType").innerHTML = '';
                                 document.getElementById("calyGif").style.display = "none";
+                                document.getElementById("calyGif").style.opacity = "1";
                                 document.getElementById("calyPhone").style.display = "none";
                                 document.getElementById("calyCall").style.display = "block";
                             }, 3000);
@@ -411,6 +392,12 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                 CalComponent.prototype.calSpeech = function (calyStay, phraseArray) {
                     var _this = this;
                     setTimeout(function () {
+                        var calyGif = document.getElementById("calyGif");
+                        // console.log("queu check");
+                        // if(calyGif.src.includes("idle")){
+                        //   console.log("CHATTING AWAY");
+                        //   this.calyState("chatIntro");
+                        // }
                         _this.startTalking();
                         document.getElementById("calType").innerHTML = "";
                         var ctx = _this;
@@ -422,7 +409,17 @@ System.register(['angular2/core', './kindness.service'], function(exports_1, con
                             backSpeed: 2,
                             loop: false,
                             loopCount: false,
+                            preStringTyped: function () {
+                                if (calyGif.src.includes("idle")) {
+                                    console.log("START CHATTING");
+                                    ctx.calyState("chatIntro");
+                                }
+                            },
                             callback: function () {
+                                if (!calyGif.src.includes("winning")) {
+                                    console.log("DONE CHATTING");
+                                    ctx.calyState("chatOutro");
+                                }
                                 if (!calyStay) {
                                     clearTimeout(ctx.calyTimeout);
                                     ctx.stopTalking();

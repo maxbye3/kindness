@@ -6,6 +6,7 @@ import { GoCalComponent } from './go.cal.component';
   selector: 'kindness-complete',
     template: `
 <!-- KINDNESS Done Screen -->
+    <div id="calVictory" style="display: none;"></div>
     <div id='doneView' style="display: none;">
             
             <h1> Your daily kindness is complete.

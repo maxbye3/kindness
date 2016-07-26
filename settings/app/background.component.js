@@ -1,4 +1,4 @@
-System.register(['angular2/core', './sonny.component', './sonny.dialogue.component', './cal.component', './go.cal.component', './weather.component', './kindness.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './sonny.component', './sonny.dialogue.component', './cal.component', './go.cal.component', './weather.component', './kindness.service', './settings.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, sonny_component_1, sonny_dialogue_component_1, cal_component_1, go_cal_component_1, weather_component_1, kindness_service_1;
+    var core_1, sonny_component_1, sonny_dialogue_component_1, cal_component_1, go_cal_component_1, weather_component_1, kindness_service_1, settings_component_1;
     var BackgroundComponent;
     return {
         setters:[
@@ -34,6 +34,9 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
             },
             function (kindness_service_1_1) {
                 kindness_service_1 = kindness_service_1_1;
+            },
+            function (settings_component_1_1) {
+                settings_component_1 = settings_component_1_1;
             }],
         execute: function() {
             BackgroundComponent = (function () {
@@ -41,13 +44,22 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
                     this.showStyle = false;
                     this.theme = "summer";
                     this.selectedBackground = "summer";
-                    this.furnitureImg = './img/scenes/summer.gif';
                     this.calVisit = 0;
                     this.kindnessService = kindnessService;
                     this.sonnyComponent = sonnyComponent;
                     this.sonnyDialogue = sonnyDialogue;
                 }
                 BackgroundComponent.prototype.ngOnInit = function () {
+                    this.summerScene();
+                };
+                /*
+                * SETTINGS
+                */
+                BackgroundComponent.prototype.settings = function () {
+                    console.log("go to settings");
+                    document.getElementById("settingsView").style.display = "block";
+                    document.getElementById("settingsView").style.animation = "settingsIntro 1s";
+                    document.getElementById("settingsView").style.animationFillMode = "forward";
                 };
                 /*
                 * CHECK SUBMISSION
@@ -91,10 +103,14 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
                         this.sonnyDisclaimer(["Congrats on recording today's kindness!!"], 2000);
                     }
                     document.getElementById("doneView").style.display = "block";
+                    document.getElementById("calVictory").style.display = "block";
                     setTimeout(function () {
                         document.getElementById("kindnessView").style.display = "none";
                     }, 500);
                     this.sonnyDialogue.transitionViews("kindnessView", "doneView");
+                };
+                BackgroundComponent.prototype.themeBack = function () {
+                    this.sonnyDialogue.transitionViews("themeChange", "kindnessView");
                 };
                 BackgroundComponent.prototype.sonnyDisclaimer = function (phraseArray, timeout) {
                     var _this = this;
@@ -106,6 +122,18 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
                             _this.sonnyComponent.stopTalking();
                         }, 6000);
                     }, timeout);
+                };
+                /*
+                * SUMMER SCENE
+                */
+                BackgroundComponent.prototype.summerScene = function () {
+                    document.getElementById("themeSelected").innerHTML = "summer";
+                    this.furnitureImg = './img/scenes/summer.gif?t=' + new Date().getTime();
+                    document.getElementById("birdContainer").style.display = "block";
+                    document.getElementById("boatContainer").style.display = "block";
+                    document.getElementById("winterHouse").style.display = "none";
+                    document.getElementById("snowContainer1").style.display = "none";
+                    document.getElementById("snowContainer2").style.display = "none";
                 };
                 /*
                 * Changing the theme
@@ -125,17 +153,25 @@ System.register(['angular2/core', './sonny.component', './sonny.dialogue.compone
                 };
                 // theme change (end)
                 BackgroundComponent.prototype.changeFurniture = function (theme) {
-                    if (theme == "summer")
-                        this.furnitureImg = './img/scenes/summer.gif';
-                    else if (theme == "winter")
-                        this.furnitureImg = './img/scenes/winter.gif';
+                    if (theme == "summer") {
+                        this.summerScene();
+                    }
+                    else if (theme == "winter") {
+                        document.getElementById("themeSelected").innerHTML = "winter";
+                        this.furnitureImg = './img/scenes/winter.gif?t=' + new Date().getTime();
+                        document.getElementById("birdContainer").style.display = "none";
+                        document.getElementById("boatContainer").style.display = "none";
+                        document.getElementById("winterHouse").style.display = "block";
+                        document.getElementById("snowContainer1").style.display = "block";
+                        document.getElementById("snowContainer2").style.display = "block";
+                    }
                 };
                 BackgroundComponent = __decorate([
                     core_1.Component({
                         selector: 'background',
                         templateUrl: 'app/background.component.html',
                         styleUrls: ['app/background.component.css'],
-                        directives: [sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue, cal_component_1.CalComponent, go_cal_component_1.GoCalComponent, weather_component_1.WeatherComponent],
+                        directives: [settings_component_1.SettingsComponent, sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue, cal_component_1.CalComponent, go_cal_component_1.GoCalComponent, weather_component_1.WeatherComponent],
                         providers: [kindness_service_1.KindnessService, sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue, weather_component_1.WeatherComponent, cal_component_1.CalComponent]
                     }), 
                     __metadata('design:paramtypes', [kindness_service_1.KindnessService, sonny_component_1.SonnyComponent, sonny_dialogue_component_1.SonnyDialogue])

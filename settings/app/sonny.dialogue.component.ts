@@ -34,7 +34,7 @@ declare var jQuery: any;
         <form action="" id="kindness" style="width: 80%">
           <div style="text-align: left;">
             <h3>Your Email</h3>
-            <input class="input" type="text" id="inputPerson" placeholder="optional">
+            <input class="input" type="text" id="inputOptional" placeholder="optional">
             
 
             <h3>Message </h3>
@@ -72,16 +72,20 @@ export class SonnyDialogue implements OnInit {
     }
 
     ngOnInit() {
-    	
+
         //calculate the number of hours left
         this.hoursLeft = this.calculateHoursLeft();
 
         // setTimeout(() => {  
         //     document.getElementById("kindnessView").style.display = 'none';
         // }, 0); 
-
-       // this.greeting(false,["Hello! Welcome!<br>This is the prototype of the Kindness App!","Click this icon <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> if you need my help."]);       
-        this.greeting(false,["Hello! "]);
+       var victoryTrue = document.getElementById("doneView").style.display != "none";
+       if(!victoryTrue){
+        this.greeting(false,["Hello! Welcome!<br>This is the prototype of the Kindness App!","Click this icon <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> if you need my help."]);       
+       }
+       else{
+        this.greeting(false,["Welcome Back!<br>You've submitted your daily kindness","However, there's more to explore. Click <img src='./img/icons/sonny.png' style='height: 20px;border: #473939 solid 0.5px;padding: 5px;vertical-align: bottom;'> if you need my help."]);
+       }
         setTimeout(() => { 
             this.jiggleIcon();
         }, 8000);
@@ -169,7 +173,9 @@ export class SonnyDialogue implements OnInit {
         this.transitionViews("helpView","kindnessView");
         
         // sony asks if this okay
-        this.sonnySpeech(true,["Here's something you could do.. Feel free to edit the act if it's not quite right.."]);
+        this.sonnySpeech(false,["Here's something you could do.. Feel free to edit the act if it's not quite right.."]);
+
+
 
         // placeholders edited        
         (<HTMLInputElement>document.getElementById("inputPerson")).value = "folks";
@@ -189,10 +195,30 @@ export class SonnyDialogue implements OnInit {
         "Seriously though, thanks for taking the time.", "All feedback is used to improve the app."]);
     }
 
+    launchBirds(){
+        // console.log("launch birds");
+        setTimeout(() => { 
+            document.getElementById("birdContainer").style.left = "100%"; 
+        },500);
+
+
+       setTimeout(() => { 
+            document.getElementById("birdContainer").style.left = "-400px"; 
+        },50000);
+
+
+        setTimeout(() => { 
+            this.launchBirds();
+        },100000);
+    }
+
     /*
     * SONNY HELP 
     */
     intHelp(){
+        
+        this.launchBirds();
+        
         var sonny = document.getElementById("sonnyIcon");
         var ctx = this;
          document.getElementById("typed").innerHTML = ""; 

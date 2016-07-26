@@ -25,8 +25,6 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.whoArray = [];
                     this.dateArray = [];
                     this.stateArray = 'ready';
-                    console.log("SERVICE CONSTRUCTOR");
-                    console.log(this.loadData());
                 }
                 KindnessService.prototype.ngOnInit = function () {
                 };
@@ -69,7 +67,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     if (mm < 10) {
                         mm = 0 + mm;
                     }
-                    return dd + '/' + mm + '/' + yyyy;
+                    return mm + '/' + dd + '/' + yyyy;
                 };
                 /*
                 * STORE KINDNESS, RECEPTIENT & DATE DATA PER KIND ACTION
@@ -84,7 +82,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     this.kindnessArray.unshift(kindness);
                     this.whoArray.unshift(who);
                     var now = this.formatDateNow();
-                    this.dateArray.unshift();
+                    this.dateArray.unshift(now);
                     localStorage.setItem("kindnessArray", JSON.stringify(this.kindnessArray));
                     localStorage.setItem("whoArray", JSON.stringify(this.whoArray));
                     localStorage.setItem("dateArray", JSON.stringify(this.dateArray));

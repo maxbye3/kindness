@@ -55,6 +55,7 @@ System.register(['angular2/core', './cal.component'], function(exports_1, contex
                             break;
                         default:
                             console.log("caly gone");
+                            clearTimeout(this.calComponent.calyTimeout);
                             document.getElementById("calType").innerHTML = ""; // remove text from bubble
                             document.getElementById("calyGif").style.right = "-200px";
                             document.getElementById("calType").innerHTML = "";

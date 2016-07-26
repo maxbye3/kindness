@@ -1,6 +1,6 @@
 .sonnyContainer {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
 }
 .sonnyChar {
     position: absolute;

@@ -6,13 +6,14 @@ import {CalComponent} from './cal.component';
 import {GoCalComponent} from './go.cal.component';
 import {WeatherComponent} from './weather.component';
 import {KindnessService} from './kindness.service';
+import {SettingsComponent} from './settings.component';
 declare var jQuery: any;
 
 @Component({
   selector: 'background',
   templateUrl: 'app/background.component.html',
   styleUrls: ['app/background.component.css'],
-  directives: [SonnyComponent,SonnyDialogue,CalComponent,GoCalComponent,WeatherComponent],
+  directives: [SettingsComponent,SonnyComponent,SonnyDialogue,CalComponent,GoCalComponent,WeatherComponent],
   providers: [KindnessService,SonnyComponent,SonnyDialogue,WeatherComponent,CalComponent]
 })
 
@@ -21,7 +22,7 @@ export class BackgroundComponent implements OnInit{
   public showStyle = false;
   private theme = "summer";
   private selectedBackground = "summer";
-  private furnitureImg = './img/scenes/summer.gif';
+  private furnitureImg;
   private calVisit = 0;
   private sonnyComponent;
   private sonnyDialogue;
@@ -35,7 +36,17 @@ export class BackgroundComponent implements OnInit{
     }
 
     ngOnInit(){
-    
+      this.summerScene();
+    }
+
+    /* 
+    * SETTINGS
+    */
+    settings(){
+      console.log("go to settings");
+      document.getElementById("settingsView").style.display = "block";
+      document.getElementById("settingsView").style.animation = "settingsIntro 1s";
+      document.getElementById("settingsView").style.animationFillMode = "forward";
     }
 
     /*
@@ -84,10 +95,15 @@ export class BackgroundComponent implements OnInit{
       this.sonnyDisclaimer(["Congrats on recording today's kindness!!"],2000);
       }
       document.getElementById("doneView").style.display = "block";
+      document.getElementById("calVictory").style.display = "block";
       setTimeout(() => { 
         document.getElementById("kindnessView").style.display = "none";
       }, 500);
       this.sonnyDialogue.transitionViews("kindnessView","doneView");
+    }
+
+    themeBack(){
+      this.sonnyDialogue.transitionViews("themeChange","kindnessView");
     }
 
     sonnyDisclaimer(phraseArray,timeout){
@@ -100,6 +116,18 @@ export class BackgroundComponent implements OnInit{
         this.sonnyComponent.stopTalking();
         }, 6000);
       }, timeout);
+    }
+    /*
+    * SUMMER SCENE
+    */ 
+    summerScene(){
+        document.getElementById("themeSelected").innerHTML = "summer";
+        this.furnitureImg = './img/scenes/summer.gif?t=' + new Date().getTime();
+        document.getElementById("birdContainer").style.display = "block";
+        document.getElementById("boatContainer").style.display = "block";
+        document.getElementById("winterHouse").style.display = "none";
+        document.getElementById("snowContainer1").style.display = "none";
+        document.getElementById("snowContainer2").style.display = "none";
     }
 
     /*
@@ -123,10 +151,19 @@ export class BackgroundComponent implements OnInit{
     // theme change (end)
 
     changeFurniture(theme){
-    if(theme == "summer")
-       this.furnitureImg = './img/scenes/summer.gif'
-    else if(theme == "winter")  
-        this.furnitureImg = './img/scenes/winter.gif' 
+      if(theme == "summer"){
+        this.summerScene();
+       
+      }
+      else if(theme == "winter")  {
+          document.getElementById("themeSelected").innerHTML = "winter";
+          this.furnitureImg = './img/scenes/winter.gif?t=' + new Date().getTime();
+          document.getElementById("birdContainer").style.display = "none";
+          document.getElementById("boatContainer").style.display = "none";
+          document.getElementById("winterHouse").style.display = "block";
+          document.getElementById("snowContainer1").style.display = "block";
+          document.getElementById("snowContainer2").style.display = "block";
+      }
     }
 }
 

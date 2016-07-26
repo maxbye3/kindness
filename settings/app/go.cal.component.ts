@@ -62,13 +62,13 @@ export class GoCalComponent{
       console.log("caly phone");
       document.getElementById("calyCall").style.display = "none";
       this.calComponent.calyState("return-phone");
-      
     break;
     default:
       console.log("caly gone");
+      clearTimeout(this.calComponent.calyTimeout);
       document.getElementById("calType").innerHTML = ""; // remove text from bubble
       document.getElementById("calyGif").style.right = "-200px"; 
-       document.getElementById("calType").innerHTML = "";
+      document.getElementById("calType").innerHTML = "";
       document.getElementById("calyGif").style.display = "none";
       document.getElementById("calyPhone").style.display = "none";
       document.getElementById("calyCall").style.display = "block";

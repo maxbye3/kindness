@@ -14,10 +14,6 @@ export class KindnessService implements OnInit {
     private stateArray = 'ready';
 
     constructor() {
-
-        console.log("SERVICE CONSTRUCTOR");
-        console.log(this.loadData());
-
     }
 
     ngOnInit() {
@@ -68,7 +64,7 @@ export class KindnessService implements OnInit {
         mm=0+mm;
     } 
     
-    return dd+'/'+mm+'/'+yyyy; 
+    return mm+'/'+dd+'/'+yyyy; 
     }
 
     /*
@@ -87,7 +83,7 @@ export class KindnessService implements OnInit {
         this.kindnessArray.unshift(kindness);
         this.whoArray.unshift(who);
         var now = this.formatDateNow();
-        this.dateArray.unshift();
+        this.dateArray.unshift(now);
 
    
         localStorage.setItem("kindnessArray", JSON.stringify(this.kindnessArray));

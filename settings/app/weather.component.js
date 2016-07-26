@@ -21,6 +21,38 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             WeatherComponent = (function () {
                 function WeatherComponent() {
                 }
+                WeatherComponent.prototype.ngOnInit = function () {
+                    this.snow();
+                    console.log("snow");
+                };
+                WeatherComponent.prototype.snow = function () {
+                    var _this = this;
+                    this.makeItRain("snowContainer1");
+                    this.snowTimeout = setInterval(function () {
+                        document.getElementById("snowContainer1").innerHTML = "";
+                        _this.makeItRain("snowContainer1");
+                    }, 10000);
+                    setTimeout(function () {
+                        _this.snowTimeout = setInterval(function () {
+                            document.getElementById("snowContainer2").innerHTML = "";
+                            _this.makeItRain("snowContainer2");
+                        }, 10000);
+                    }, 2500);
+                };
+                WeatherComponent.prototype.makeItRain = function (container) {
+                    for (var i = 0; i < 10; i++) {
+                        document.getElementById(container).innerHTML +=
+                            '<div id="snow" \
+            style="\
+            left: ' + Math.floor((Math.random() * 90) + 1) + 'vw;\
+            border-radius: 500px;\
+            animation-name: rain' + Math.floor((Math.random() * 2) + 1) + ';\
+            animation-duration: ' + Math.floor((Math.random() * 5) + 2) + 's;\
+            animation-delay: ' + Math.floor((Math.random() * 5) + 0) + 's;\
+            background: white;\
+            "></div>';
+                    }
+                };
                 WeatherComponent.prototype.rain = function () {
                     var colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange'];
                     colors[0];
@@ -42,7 +74,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 WeatherComponent = __decorate([
                     core_1.Component({
                         selector: 'weather',
-                        template: "\n    <div id=\"weatherContainer\">\n        <div id=\"tinselContainer\" style=\"position: absolute; margin-top: -60px;\"></div>\n    </div>\n    \n\n    ",
+                        template: "\n\n\n    <div id=\"weatherContainer\">\n        <div id=\"snowContainer1\" style=\"position: absolute; margin-top: -60px;\"></div>\n        <div id=\"snowContainer2\" style=\"position: absolute; margin-top: -60px;\"></div>\n        <div id=\"tinselContainer\" style=\"position: absolute; margin-top: -60px;\"></div>\n    </div>\n    \n\n    ",
                     }), 
                     __metadata('design:paramtypes', [])
                 ], WeatherComponent);
