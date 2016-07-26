@@ -1,11 +1,21 @@
 <html>
   <head>
     <base href="/">
-    <title>Angular 2 QuickStart</title>
+    <title>Kindness App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
+   
+    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>-->
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+     <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    
+    <script src="app/typed.js" type="text/javascript"></script>
+    
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
@@ -14,6 +24,15 @@
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="app/angular-not-working.js"></script>
+    <script src="app/settings-not-angular.js"></script>
+
+  <script>
+  $( function() {
+    $( ".datepicker" ).datepicker();
+  } );
+  </script>
+
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({
@@ -27,9 +46,17 @@
       System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
+    
   </head>
   <!-- 3. Display the application -->
   <body>
+
+        
     <my-app>Loading...</my-app>
+
+     
+
+
   </body>
+
 </html>

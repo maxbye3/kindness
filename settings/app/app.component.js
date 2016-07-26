@@ -1,4 +1,4 @@
-System.register(['angular2/core', './kindness.service', './kindness.component', 'angular2/router', './dashboard.component', './background.component', './kindness-detail.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './background.component', './sonny.dialogue.component', './sonny.component', './cal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,30 +10,27 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, kindness_service_1, kindness_component_1, router_1, dashboard_component_1, background_component_1, kindness_detail_component_1;
+    var core_1, router_1, background_component_1, sonny_dialogue_component_1, sonny_component_1, cal_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (kindness_service_1_1) {
-                kindness_service_1 = kindness_service_1_1;
-            },
-            function (kindness_component_1_1) {
-                kindness_component_1 = kindness_component_1_1;
-            },
             function (router_1_1) {
                 router_1 = router_1_1;
-            },
-            function (dashboard_component_1_1) {
-                dashboard_component_1 = dashboard_component_1_1;
             },
             function (background_component_1_1) {
                 background_component_1 = background_component_1_1;
             },
-            function (kindness_detail_component_1_1) {
-                kindness_detail_component_1 = kindness_detail_component_1_1;
+            function (sonny_dialogue_component_1_1) {
+                sonny_dialogue_component_1 = sonny_dialogue_component_1_1;
+            },
+            function (sonny_component_1_1) {
+                sonny_component_1 = sonny_component_1_1;
+            },
+            function (cal_component_1_1) {
+                cal_component_1 = cal_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -42,15 +39,16 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <router-outlet></router-outlet>\n     \n    <!-- <a [routerLink]=\"['ChangeTheme']\">Change Theme</a> -->\n    <!-- <background></background> -->\n  ",
+                        template: "\n    <!-- <router-outlet></router-outlet>\n  <a [routerLink]=\"['JQUERY']\">loading</a> -->\n  <background></background>\n  ",
                         styleUrls: ['app/app.component.css'],
                         directives: [
-                            kindness_component_1.KindnessComponent,
                             background_component_1.BackgroundComponent,
+                            sonny_component_1.SonnyComponent,
+                            sonny_dialogue_component_1.SonnyDialogue,
+                            cal_component_1.CalComponent,
                             router_1.ROUTER_DIRECTIVES],
                         providers: [
                             router_1.ROUTER_PROVIDERS,
-                            kindness_service_1.KindnessService
                         ]
                     }),
                     router_1.RouteConfig([
@@ -59,23 +57,6 @@ System.register(['angular2/core', './kindness.service', './kindness.component', 
                             name: 'ChangeTheme',
                             component: background_component_1.BackgroundComponent
                         },
-                        // default views
-                        {
-                            path: '/kindness',
-                            name: 'Kindness',
-                            component: kindness_component_1.KindnessComponent
-                        },
-                        {
-                            path: '/dashboard',
-                            name: 'Dashboard',
-                            component: dashboard_component_1.DashboardComponent,
-                            useAsDefault: true
-                        },
-                        {
-                            path: '/detail/:id',
-                            name: 'KindnessDetail',
-                            component: kindness_detail_component_1.KindnessDetailComponent
-                        }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
